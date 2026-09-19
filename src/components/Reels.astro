@@ -1,0 +1,60 @@
+---
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { reels, site } from '../content';
+import { externo } from '../lib/contato';
+import Section from './Section.astro';
+import Container from './Container.astro';
+import Heading from './Heading.astro';
+import Button from './Button.astro';
+import CTAAgendar from './CTAAgendar.astro';
+import ReelsPlayer from './ReelsPlayer';
+import type { ReelOtimizado } from './galeria-tipos';
+
+const posters = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/reels/*.{jpg,jpeg,png,webp,avif}',
+  { eager: true },
+);
+
+// titulo e descricao ficam no JSON (aria-label do player e JSON-LD); nenhum dos dois aparece na tela.
+const itens: ReelOtimizado[] = await Promise.all(
+  reels.map(async (r, i) => {
+    const meta = posters[`../assets/reels/${r.poster}`]?.default;
+    if (!meta) throw new Error(`reels.json: poster "${r.poster}" não existe em src/assets/reels/.`);
+    const poster = await getImage({
+      src: meta,
+      format: 'webp',
+      width: 405,
+      height: 720,
+      quality: 60,
+    });
+    return {
+      id: `reel-${i}`,
+      titulo: r.titulo,
+      video: r.arquivo,
+      poster: poster.src,
+      posterLargura: 405,
+      posterAltura: 720,
+      legendas: r.legendas,
+    };
+  }),
+);
+---
+
+{itens.length > 0 && (
+  <Section fundo="pearl" aria-labelledby="reels">
+    <Container>
+      <Heading nivel={2} id="reels">
+        O studio em movimento
+      </Heading>
+      <div class="mt-12">
+        <ReelsPlayer client:visible reels={itens} />
+      </div>
+      <CTAAgendar secao="reels">
+        <Button href={site.links.instagram} {...externo} variante="secundario">
+          Ver mais no Instagram<span class="sr-only"> (abre em nova aba)</span>
+        </Button>
+      </CTAAgendar>
+    </Container>
+  </Section>
+)}

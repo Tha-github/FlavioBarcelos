@@ -1,0 +1,189 @@
+---
+import { site } from '../content/site';
+---
+
+<aside
+  id="cookie-banner"
+  aria-labelledby="cookie-titulo"
+  hidden
+  class="tema-claro fixed inset-x-0 bottom-0 z-40 max-h-[45dvh] overflow-y-auto border-t border-champagne bg-pearl p-5 text-onyx"
+>
+  <div class="mx-auto max-w-site">
+    <h2 id="cookie-titulo" class="font-medium">
+      Suas escolhas de privacidade
+    </h2>
+    <p class="mt-2 text-step--1">
+      Usamos armazenamento necessário para lembrar sua escolha. Você decide se permite análises,
+      marketing e conteúdo de terceiros. Recusar não impede o agendamento.
+    </p>
+    <div class="mt-4 flex flex-wrap gap-3">
+      <button type="button" data-consent-accept class="consent-action">
+        Aceitar todos
+      </button>
+      <button type="button" data-consent-reject class="consent-action">
+        Recusar não essenciais
+      </button>
+      <button type="button" data-preferences class="consent-action">
+        Personalizar
+      </button>
+    </div>
+    <nav
+      aria-label="Documentos de privacidade"
+      class="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-step--1"
+    >
+      <a href="/politica-de-privacidade">Política de Privacidade</a>
+      <a href="/termos-de-uso">Termos de Uso</a>
+      <a href="/politica-de-cookies">Política de Cookies</a>
+    </nav>
+  </div>
+</aside>
+<dialog
+  id="cookie-preferences"
+  aria-labelledby="preferences-titulo"
+  aria-describedby="preferences-descricao"
+  class="tema-claro m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-xl overflow-y-auto border border-champagne bg-pearl p-6 text-onyx backdrop:bg-onyx/60"
+>
+  <h2 id="preferences-titulo" class="font-display text-step-3">
+    Preferências de cookies
+  </h2>
+  <p id="preferences-descricao" class="mt-3">
+    Escolha quais categorias permitir. Você pode mudar de ideia pelo rodapé.
+  </p>
+  <form id="consent-form" class="mt-5 space-y-5">
+    <label class="categoria">
+      <input type="checkbox" checked disabled />
+      <span>
+        <strong>Necessários</strong>
+        <br />
+        Lembram as suas escolhas de privacidade. Sempre ativos.
+      </span>
+    </label>
+    <label class="categoria">
+      <input type="checkbox" name="analiticos" />
+      <span>
+        <strong>Analíticos</strong>
+        <br />
+        Google Analytics, se configurado, para entender o uso do site.
+      </span>
+    </label>
+    <label class="categoria">
+      <input type="checkbox" name="marketing" />
+      <span>
+        <strong>Marketing</strong>
+        <br />
+        Publicidade e medição de campanhas. Nenhum pixel está instalado.
+      </span>
+    </label>
+    <label class="categoria">
+      <input type="checkbox" name="terceiros" />
+      <span>
+        <strong>Conteúdo de terceiros</strong>
+        <br />
+        Mapa do Google Maps, carregado só depois do seu clique.
+      </span>
+    </label>
+    <div class="flex flex-wrap gap-3">
+      <button type="submit" class="consent-action">
+        Salvar preferências
+      </button>
+      <button type="button" data-consent-close class="consent-action">
+        Cancelar
+      </button>
+    </div>
+    <a href="/politica-de-cookies">Conheça os cookies e serviços</a>
+  </form>
+</dialog>
+<p id="consent-status" role="status" aria-live="polite" class="sr-only"></p>
+<span id="analytics-config" data-measurement-id={site.ga4MeasurementId} hidden></span>
+
+<script>
+  import { getConsent, onConsentChange, openPreferences, saveConsent } from '../lib/consent';
+  import { initAnalytics } from '../lib/analytics';
+  const banner = document.querySelector<HTMLElement>('#cookie-banner')!;
+  const dialog = document.querySelector<HTMLDialogElement>('#cookie-preferences')!;
+  const form = document.querySelector<HTMLFormElement>('#consent-form')!;
+  const status = document.querySelector<HTMLElement>('#consent-status')!;
+  let retorno: HTMLElement | null = null;
+  function offset() {
+    document.body.dataset.cookieBanner = banner.hidden ? 'hidden' : 'visible';
+    document.body.style.setProperty(
+      '--cookie-offset',
+      banner.hidden ? '0px' : `${banner.getBoundingClientRect().height + 12}px`,
+    );
+  }
+  function atualizar() {
+    banner.hidden = getConsent() !== null;
+    offset();
+  }
+  new ResizeObserver(offset).observe(banner);
+  onConsentChange(atualizar);
+  atualizar();
+  document.querySelectorAll<HTMLButtonElement>('[data-preferences]').forEach((botao) => {
+    botao.disabled = false;
+    botao.addEventListener('click', openPreferences);
+  });
+  window.addEventListener('consent:preferences', () => {
+    if (dialog.open) return;
+    retorno = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    for (const categoria of ['analiticos', 'marketing', 'terceiros'] as const) {
+      (form.elements.namedItem(categoria) as HTMLInputElement).checked =
+        getConsent()?.categorias[categoria] ?? false;
+    }
+    dialog.showModal();
+    form.querySelector<HTMLInputElement>('input:not([disabled])')?.focus();
+  });
+  dialog.addEventListener('close', () => {
+    if (retorno && !retorno.closest('[hidden]')) retorno.focus();
+    else document.querySelector<HTMLElement>('footer [data-preferences]')?.focus();
+  });
+  dialog.querySelector('[data-consent-close]')!.addEventListener('click', () => dialog.close());
+  function salvar(analiticos: boolean, marketing: boolean, terceiros: boolean) {
+    const persistido = saveConsent({ necessarios: true, analiticos, marketing, terceiros });
+    status.textContent = persistido
+      ? 'Preferências de privacidade salvas.'
+      : 'Escolha aplicada nesta página. O navegador não permitiu salvar; perguntaremos novamente na próxima visita.';
+    if (dialog.open) dialog.close();
+  }
+  banner
+    .querySelector('[data-consent-accept]')!
+    .addEventListener('click', () => salvar(true, true, true));
+  banner
+    .querySelector('[data-consent-reject]')!
+    .addEventListener('click', () => salvar(false, false, false));
+  form.addEventListener('submit', (evento) => {
+    evento.preventDefault();
+    const marcado = (nome: string) => (form.elements.namedItem(nome) as HTMLInputElement).checked;
+    salvar(marcado('analiticos'), marcado('marketing'), marcado('terceiros'));
+  });
+  initAnalytics(
+    document.querySelector<HTMLElement>('#analytics-config')?.dataset.measurementId ?? '',
+  );
+</script>
+<style>
+  .consent-action {
+    border: 1px solid var(--onyx);
+    border-radius: 999px;
+    padding: 0.65rem 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .consent-action:hover {
+    background: var(--marble);
+  }
+  .categoria {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .categoria input {
+    margin-top: 0.3rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    accent-color: var(--onyx);
+  }
+  a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+</style>

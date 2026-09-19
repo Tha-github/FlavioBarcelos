@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import FocoCabelos from '../components/FocoCabelos.astro';
+import ServicosCapilares from '../components/ServicosCapilares.astro';
+import ComoFunciona from '../components/ComoFunciona.astro';
+import Galeria from '../components/Galeria.astro';
+import Reels from '../components/Reels.astro';
+import Sobre from '../components/Sobre.astro';
+import OutrosServicos from '../components/OutrosServicos.astro';
+import Depoimentos from '../components/Depoimentos.astro';
+import FAQ from '../components/FAQ.astro';
+import Localizacao from '../components/Localizacao.astro';
+import CTAFinal from '../components/CTAFinal.astro';
+import Footer from '../components/Footer.astro';
+import DadosEstruturados from '../components/DadosEstruturados.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { site } from '../content/site';
+---
+
+<BaseLayout title={site.nome} description={site.descricao}>
+  <DadosEstruturados slot="head" />
+  <Header slot="header" />
+
+  <Hero />
+  <FocoCabelos />
+  <ServicosCapilares />
+  <ComoFunciona />
+  <Galeria />
+  <Reels />
+  <Sobre />
+  <OutrosServicos />
+  <FAQ />
+  <Depoimentos />
+  <Localizacao />
+  <CTAFinal />
+  <Footer slot="footer" />
+
+  <WhatsAppButton slot="flutuantes" />
+</BaseLayout>

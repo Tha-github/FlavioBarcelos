@@ -1,0 +1,163 @@
+@import 'tailwindcss';
+
+/* Fontes auto-hospedadas: apenas subset latin e os pesos usados (font-display: swap). */
+@import '@fontsource/bodoni-moda/latin-400.css';
+@import '@fontsource/bodoni-moda/latin-500.css';
+@import '@fontsource/manrope/latin-400.css';
+@import '@fontsource/manrope/latin-500.css';
+@import '@fontsource/manrope/latin-700.css';
+
+/* ---------- Tokens (seção 2.3 do prompt.md) ---------- */
+:root {
+  /* Cores */
+  /* Paleta "Luxe & Elegant" (ajuste de cores): valores aproximados lidos da imagem enviada. */
+  --onyx: #000000; /* texto e superfícies muito escuras */
+  --velvet: #212f52; /* marinho: botões, títulos, links e CTA final */
+  --marble: #e9e6e1; /* fundo de seções alternadas */
+  --pearl: #ffffff; /* fundo principal claro */
+  --champagne: #d2b589; /* acento: detalhes, bordas finas e ícones (não usar em texto) */
+  --silk: #eee6db; /* hero, header e rodapé */
+
+  /* Tipografia */
+  --fonte-display: 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+  --fonte-corpo: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --entrelinha-corpo: 1.6;
+
+  /* Escala modular 1.25 (em rem: base 17px mobile, 18px desktop) */
+  --scale: 1.25;
+  --step--1: 0.8rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.5625rem;
+  --step-3: 1.9531rem;
+  --step-4: 2.4414rem;
+  --step-5: 3.0518rem;
+  --step-6: 3.8147rem;
+
+  /* Espaçamento (base 0.5rem) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --section-y: clamp(4rem, 8vw, 8rem);
+
+  /* Layout */
+  --container: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2rem);
+
+  /* Foco: definido por tema (claro/escuro) em .tema-* */
+  --focus-ring: var(--onyx);
+}
+
+/* ---------- Mapeamento no Tailwind ---------- */
+@theme inline {
+  --color-onyx: var(--onyx);
+  --color-velvet: var(--velvet);
+  --color-marble: var(--marble);
+  --color-pearl: var(--pearl);
+  --color-champagne: var(--champagne);
+  --color-silk: var(--silk);
+
+  --font-display: var(--fonte-display);
+  --font-sans: var(--fonte-corpo);
+
+  --text-step--1: var(--step--1);
+  --text-step-0: var(--step-0);
+  --text-step-1: var(--step-1);
+  --text-step-2: var(--step-2);
+  --text-step-3: var(--step-3);
+  --text-step-4: var(--step-4);
+  --text-step-5: var(--step-5);
+  --text-step-6: var(--step-6);
+
+  --tracking-titulo: -0.02em;
+  --leading-corpo: var(--entrelinha-corpo);
+
+  --spacing-section: var(--section-y);
+  --spacing-gutter: var(--gutter);
+  --container-site: var(--container);
+}
+
+/* ---------- Base ---------- */
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+@media (min-width: 48rem) {
+  html {
+    font-size: 18px;
+  }
+}
+
+body {
+  background-color: var(--pearl);
+  color: var(--onyx);
+  font-family: var(--fonte-corpo);
+  font-weight: 400;
+  line-height: var(--entrelinha-corpo);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Temas de seção */
+.tema-claro {
+  --focus-ring: var(--onyx);
+}
+.tema-escuro {
+  --focus-ring: var(--marble);
+}
+.tema-silk {
+  --focus-ring: var(--velvet);
+}
+
+/* Foco visível em todo elemento interativo */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* Site centralizado (ajuste A2): parágrafos com ~60 caracteres por linha e margens automáticas. */
+@layer base {
+  main :where(p),
+  footer :where(p) {
+    max-inline-size: 60ch;
+    margin-inline: auto;
+  }
+}
+
+/* FAQ, Como chegar e rodapé: alinhados à esquerda no desktop (lg); centralizados no mobile.
+   Fora de @layer de propósito: precisa vencer o text-center do Section (camada utilities). */
+@media (min-width: 64rem) {
+  .esq-lg {
+    text-align: left;
+  }
+  .esq-lg :where(p) {
+    margin-inline: 0;
+  }
+}
+
+::selection {
+  background: var(--champagne);
+  color: var(--onyx);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

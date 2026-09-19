@@ -1,0 +1,56 @@
+---
+import { site } from '../content';
+import { externo } from '../lib/contato';
+import Container from './Container.astro';
+import Logo from './Logo.astro';
+import NAP from './NAP.astro';
+import Horarios from './Horarios.astro';
+
+const link = 'text-velvet inline-flex min-h-11 items-center underline-offset-4 hover:underline';
+---
+
+<footer class="tema-silk esq-lg border-velvet/20 bg-silk text-onyx border-t py-12 pb-28 text-center lg:pb-12 lg:text-left">
+  <Container class="flex flex-col items-center gap-8 lg:items-start">
+    <a href="#conteudo" class="text-velvet inline-block">
+      <Logo />
+    </a>
+    <div class="flex flex-col items-center gap-8 lg:grid lg:w-full lg:grid-cols-2 lg:items-start lg:gap-10">
+      <NAP />
+      <div>
+        <h2 class="mb-3 font-medium">Horários</h2>
+        <Horarios />
+      </div>
+    </div>
+    <nav aria-label="Redes sociais" class="flex flex-wrap justify-center gap-x-6 lg:justify-start">
+      <a href={site.links.instagram} {...externo} class={link}>
+        Instagram<span class="sr-only"> (abre em nova aba)</span>
+      </a>
+      <a href={site.links.google} {...externo} class={link}>
+        Perfil no Google<span class="sr-only"> (abre em nova aba)</span>
+      </a>
+    </nav>
+    <nav
+      aria-label="Informações legais"
+      class="text-step--1 flex flex-wrap justify-center gap-x-6 lg:justify-start"
+    >
+      <a href="/politica-de-privacidade" class={link}>
+        Política de Privacidade
+      </a>
+      <a href="/termos-de-uso" class={link}>
+        Termos de Uso
+      </a>
+      <a href="/politica-de-cookies" class={link}>
+        Política de Cookies
+      </a>
+      <button type="button" disabled data-preferences class={`${link} cursor-pointer`}>
+        Preferências de cookies
+      </button>
+    </nav>
+    <p class="text-step--1">
+      {site.empresa.nomeCivil} — CNPJ {site.empresa.cnpj}
+    </p>
+    <p class="text-step--1">
+      © {new Date().getFullYear()} {site.nome}
+    </p>
+  </Container>
+</footer>

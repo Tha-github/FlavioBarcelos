@@ -1,0 +1,31 @@
+---
+import { site } from '../content';
+import { externo } from '../lib/contato';
+import { whatsappLink } from '../lib/whatsapp';
+---
+
+<!--
+  Flutuante só no mobile. Quando o banner de cookies (T6) estiver visível, definir
+  <body data-cookie-banner="visible"> (opcionalmente também --cookie-offset com a altura do banner).
+-->
+<a
+  href={whatsappLink(site.mensagens.informacoes)}
+  data-secao="botao-flutuante"
+  {...externo}
+  aria-label="Falar no WhatsApp"
+  class="whatsapp-flutuante bg-pearl text-onyx border-champagne fixed right-4 z-30 flex h-14 w-14 items-center justify-center rounded-full border lg:hidden"
+>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 3C7 3 3 6.6 3 11c0 2 .9 3.8 2.3 5.2L4.5 21l4.4-1.5c.9.3 1.9.4 3.1.4 5 0 9-3.6 9-8.4S17 3 12 3z"></path>
+  </svg>
+</a>
+
+<style is:global>
+  .whatsapp-flutuante {
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px) + var(--cookie-offset, 0px));
+    transition: bottom 0.25s ease;
+  }
+  body[data-cookie-banner='visible'] {
+    --cookie-offset: 9rem;
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+// Botão "Agendar horário" padrão das seções entre o hero e o rodapé: abre o WhatsApp.
+// `secao` vira o atributo data-secao do link (usado nos eventos de Analytics configurados depois).
+// O slot recebe um botão extra ao lado (ex.: Instagram).
+import Button from './Button.astro';
+import { externo } from '../lib/contato';
+import { whatsappLink } from '../lib/whatsapp';
+import { site } from '../content';
+
+interface Props {
+  secao: string;
+  class?: string;
+}
+const { secao, class: className } = Astro.props;
+---
+
+<div class:list={['mt-10 flex flex-wrap items-center justify-center gap-4', className]}>
+  <Button
+    href={whatsappLink(site.mensagens.agendar)}
+    {...externo}
+    variante="primario"
+    data-secao={secao}
+  >
+    Agendar horário<span class="sr-only"> (abre em nova aba)</span>
+  </Button>
+  <slot />
+</div>

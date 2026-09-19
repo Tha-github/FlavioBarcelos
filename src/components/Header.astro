@@ -1,0 +1,181 @@
+---
+import Logo from './Logo.astro';
+import Button from './Button.astro';
+import { site } from '../content/site';
+import { externo } from '../lib/contato';
+import { whatsappLink } from '../lib/whatsapp';
+
+const links = [
+  { href: '#cabelos', rotulo: 'Cabelos' },
+  { href: '#servicos', rotulo: 'Serviços' },
+  { href: '#galeria', rotulo: 'Galeria' },
+  { href: '#reels', rotulo: 'Reels' },
+  { href: '#sobre', rotulo: 'Sobre' },
+  { href: '#outros-servicos', rotulo: 'Outros serviços' },
+  { href: '#como-chegar', rotulo: 'Como chegar' },
+];
+const linkClasse = 'text-velvet underline-offset-[0.4em] hover:underline';
+---
+
+<header
+  data-header
+  data-topo="true"
+  class="tema-silk bg-silk text-onyx border-velvet/20 fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300 data-[topo=true]:border-b-transparent data-[topo=true]:bg-transparent"
+>
+  <div class="max-w-site px-gutter mx-auto flex h-16 w-full items-center justify-between xl:h-20">
+    <a href="/" class="text-velvet relative z-10 rounded-sm" aria-label={`${site.nome}, início`}>
+      <Logo />
+    </a>
+
+    <nav aria-label="Principal" class="hidden items-center gap-8 xl:flex">
+      <ul class="text-step--1 flex items-center gap-6">
+        {links.map((l) => (
+          <li>
+            <a href={l.href} class={`${linkClasse} inline-flex min-h-11 items-center`}>
+              {l.rotulo}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <Button
+        href={whatsappLink(site.mensagens.agendar)}
+        data-secao="header"
+        {...externo}
+        variante="primario"
+        class="text-step--1 px-6! py-2.5!"
+      >
+        Agendar horário<span class="sr-only"> (abre em nova aba)</span>
+      </Button>
+    </nav>
+
+    <button
+      type="button"
+      data-menu-toggle
+      aria-expanded="false"
+      aria-controls="menu-mobile"
+      aria-label="Abrir menu"
+      class="text-velvet group relative z-10 flex h-11 w-11 items-center justify-center rounded-full xl:hidden"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          class="group-aria-expanded:hidden"
+          d="M4 8h16M4 16h16"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        ></path>
+        <path
+          class="hidden group-aria-expanded:inline"
+          d="M6 6l12 12M18 6L6 18"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        ></path>
+      </svg>
+    </button>
+  </div>
+
+  <div
+    id="menu-mobile"
+    data-menu-painel
+    hidden
+    class="bg-silk px-gutter fixed inset-0 overflow-y-auto pt-24 pb-10 text-center xl:hidden"
+  >
+    <nav aria-label="Principal (menu)">
+      <ul class="font-display text-step-3 tracking-titulo space-y-1">
+        {links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              data-menu-link
+              class="text-velvet block py-2 underline-offset-4 hover:underline"
+            >
+              {l.rotulo}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <Button
+      href={whatsappLink(site.mensagens.agendar)}
+      data-secao="header-menu"
+      {...externo}
+      variante="primario"
+      class="mt-8 w-full max-w-sm"
+      data-menu-link
+    >
+      Agendar horário<span class="sr-only"> (abre em nova aba)</span>
+    </Button>
+  </div>
+</header>
+
+<script>
+  // Único JS do header: fundo ao rolar e menu mobile (focus trap, Esc, fechar ao clicar em link).
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const painel = document.querySelector<HTMLElement>('[data-menu-painel]');
+
+  if (header && toggle && painel) {
+    const desktop = window.matchMedia('(min-width: 80rem)');
+
+    const atualizarTopo = () => {
+      header.dataset.topo = String(window.scrollY <= 8);
+    };
+    atualizarTopo();
+    window.addEventListener('scroll', atualizarTopo, { passive: true });
+
+    const aberto = () => toggle.getAttribute('aria-expanded') === 'true';
+
+    const focaveis = (): HTMLElement[] => [
+      toggle,
+      ...painel.querySelectorAll<HTMLElement>('a[href], button'),
+    ];
+
+    const definir = (abrir: boolean, devolverFoco = true) => {
+      toggle.setAttribute('aria-expanded', String(abrir));
+      toggle.setAttribute('aria-label', abrir ? 'Fechar menu' : 'Abrir menu');
+      painel.hidden = !abrir;
+      document.documentElement.style.overflow = abrir ? 'hidden' : '';
+      if (abrir) {
+        painel.querySelector<HTMLElement>('a')?.focus();
+      } else if (devolverFoco) {
+        toggle.focus();
+      }
+    };
+
+    toggle.addEventListener('click', () => definir(!aberto()));
+
+    painel.querySelectorAll('[data-menu-link]').forEach((el) => {
+      el.addEventListener('click', () => definir(false, false));
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!aberto()) return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        definir(false);
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const itens = focaveis();
+      const primeiro = itens[0];
+      const ultimo = itens[itens.length - 1];
+      if (!primeiro || !ultimo) return;
+      const atual = document.activeElement as HTMLElement | null;
+      if (e.shiftKey && atual === primeiro) {
+        e.preventDefault();
+        ultimo.focus();
+      } else if (!e.shiftKey && atual === ultimo) {
+        e.preventDefault();
+        primeiro.focus();
+      } else if (!atual || !itens.includes(atual)) {
+        e.preventDefault();
+        primeiro.focus();
+      }
+    });
+
+    desktop.addEventListener('change', (e) => {
+      if (e.matches && aberto()) definir(false, false);
+    });
+  }
+</script>

@@ -1,0 +1,72 @@
+---
+import { rotasUrls } from '../lib/contato';
+import Button from './Button.astro';
+---
+
+<div data-mapa data-mapa-url={rotasUrls().embed}>
+  <div data-mapa-quadro class="aspect-[4/3] overflow-hidden bg-marble">
+    <img
+      src="/mapa-placeholder.svg"
+      alt="Ilustração provisória de mapa, sem representação de ruas ou localização real"
+      width="800"
+      height="600"
+      loading="lazy"
+      class="h-full w-full object-cover"
+    />
+  </div>
+  <p class="mt-3 text-step--1">Mapa ilustrativo [CONFIRMAR].</p>
+  <p id="mapa-aviso" class="mt-3 text-step--1">
+    O mapa do Google só pode ser carregado com a permissão para Conteúdo de terceiros.
+  </p>
+  <Button class="mt-4" data-carregar-mapa aria-describedby="mapa-aviso mapa-status" disabled>
+    Carregar mapa
+  </Button>
+  <p
+    id="mapa-status"
+    class="mt-3 text-step--1"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  ></p>
+  <noscript>
+    <p class="mt-3">Use os links de rotas para abrir o mapa.</p>
+  </noscript>
+</div>
+
+<script>
+  import { hasConsent, onConsentChange, openPreferences } from '../lib/consent';
+  const mapa = document.querySelector<HTMLElement>('[data-mapa]');
+  const botao = mapa?.querySelector<HTMLButtonElement>('[data-carregar-mapa]');
+  const status = mapa?.querySelector<HTMLElement>('#mapa-status');
+  const quadro = mapa?.querySelector<HTMLElement>('[data-mapa-quadro]');
+  if (mapa && botao && status && quadro) {
+    const fachada = quadro.cloneNode(true) as HTMLElement;
+    onConsentChange(() => {
+      if (!hasConsent('terceiros')) {
+        quadro.replaceChildren(...Array.from(fachada.cloneNode(true).childNodes));
+        botao.disabled = false;
+        status.textContent = 'Mapa desativado. Você pode usar os links de rotas.';
+      }
+    });
+    botao.disabled = false;
+    botao.addEventListener('click', () => {
+      if (!hasConsent('terceiros')) {
+        status.textContent =
+          'Autorize Conteúdo de terceiros nas preferências e clique novamente em Carregar mapa.';
+        openPreferences();
+        return;
+      }
+      const iframe = document.createElement('iframe');
+      iframe.title = 'Localização do estúdio no Google Maps';
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.width = '800';
+      iframe.height = '600';
+      iframe.className = 'h-full w-full border-0';
+      iframe.src = mapa.dataset.mapaUrl!;
+      quadro.replaceChildren(iframe);
+      botao.disabled = true;
+      status.textContent = 'Mapa do Google habilitado.';
+    });
+  }
+</script>

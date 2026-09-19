@@ -1,0 +1,114 @@
+---
+// JSON-LD da galeria (ImageGallery) e dos reels (VideoObject).
+// Só entram itens reais: qualquer campo com [CONFIRMAR] (ou vazio) exclui o item. As URLs precisam
+// ser absolutas, então dependem de `site` no astro.config ou da variável SITE_ORIGIN no build.
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+import { galeria, reels, servicos, site } from '../content';
+
+const origem = (Astro.site?.origin ?? process.env.SITE_ORIGIN ?? '').replace(/\/$/, '');
+const pendente = (v: string | null | undefined) => !v || v.includes('[CONFIRMAR');
+const absoluta = (url: string) => (/^https?:\/\//.test(url) ? url : `${origem}${url}`);
+
+const imagens = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/galeria/*.{jpg,jpeg,png,webp,avif}',
+  { eager: true },
+);
+const posters = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/reels/*.{jpg,jpeg,png,webp,avif}',
+  { eager: true },
+);
+
+const grafo: Record<string, unknown>[] = [];
+
+// Telefone no formato internacional: 5521969261188 -> +55-21-96926-1188.
+const d = site.whatsapp;
+const telefone = `+${d.slice(0, 2)}-${d.slice(2, 4)}-${d.slice(4, 9)}-${d.slice(9)}`;
+const e = site.endereco;
+
+// HairSalon: sem preços, sem geo e sem razão social. url só existe com a origem configurada.
+grafo.push({
+  '@type': 'HairSalon',
+  name: site.nome,
+  description: site.descricao,
+  ...(origem ? { url: origem } : {}),
+  telephone: telefone,
+  foundingDate: String(site.anoAbertura),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: `${e.rua}, ${e.numero}, ${e.sala}`,
+    addressLocality: e.cidade,
+    addressRegion: e.uf,
+    postalCode: e.cep,
+    addressCountry: 'BR',
+  },
+  openingHoursSpecification: site.horarios.map((h) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: h.dias.map(
+      (dia) => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dia],
+    ),
+    opens: h.abre,
+    closes: h.fecha,
+  })),
+  sameAs: [site.links.instagram, site.links.google],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Serviços',
+    itemListElement: servicos.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: s.nome, description: s.descricao },
+    })),
+  },
+});
+
+if (origem) {
+  const reais = galeria
+    .filter((f) => f.autorizado && !f.confirmar && !pendente(f.alt) && !pendente(f.arquivo))
+    .slice(0, 12);
+  const itens = (
+    await Promise.all(
+      reais.map(async (f) => {
+        const meta = imagens[`../assets/galeria/${f.arquivo}`]?.default;
+        if (!meta) return null;
+        const img = await getImage({
+          src: meta,
+          format: 'webp',
+          width: Math.min(meta.width, 1200),
+        });
+        return { '@type': 'ImageObject', contentUrl: absoluta(img.src), description: f.alt };
+      }),
+    )
+  ).filter(Boolean);
+  if (itens.length > 0) {
+    grafo.push({
+      '@type': 'ImageGallery',
+      name: `Cabelos feitos no ${site.nome}`,
+      image: itens,
+    });
+  }
+
+  for (const r of reels) {
+    const campos = [r.titulo, r.descricao, r.duracao, r.dataPublicacao, r.arquivo, r.poster];
+    if (campos.some(pendente)) continue;
+    const meta = posters[`../assets/reels/${r.poster}`]?.default;
+    if (!meta) continue;
+    const poster = await getImage({ src: meta, format: 'webp', width: 405, height: 720 });
+    grafo.push({
+      '@type': 'VideoObject',
+      name: r.titulo,
+      description: r.descricao,
+      thumbnailUrl: absoluta(poster.src),
+      uploadDate: r.dataPublicacao,
+      duration: r.duracao,
+      contentUrl: absoluta(r.arquivo),
+    });
+  }
+}
+
+const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': grafo }).replace(
+  /</g,
+  '\\u003c',
+);
+---
+
+{grafo.length > 0 && <script type="application/ld+json" set:html={json}></script>}

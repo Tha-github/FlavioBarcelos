@@ -1,0 +1,40 @@
+---
+import { depoimentos } from '../content';
+import { externo, rotasUrls } from '../lib/contato';
+import Section from './Section.astro';
+import Container from './Container.astro';
+import Heading from './Heading.astro';
+import Button from './Button.astro';
+import NAP from './NAP.astro';
+import Horarios from './Horarios.astro';
+import Mapa from './Mapa.astro';
+
+const rotas = rotasUrls();
+// Fundo oposto ao do FAQ, que alterna conforme haja depoimentos visíveis.
+const comDepoimentos = depoimentos.some((d) => d.autorizado === true);
+---
+
+<Section fundo={comDepoimentos ? 'marble' : 'pearl'} aria-labelledby="como-chegar" class="esq-lg">
+  <Container>
+    <Heading nivel={2} id="como-chegar">
+      Como chegar
+    </Heading>
+    <div class="mt-10 grid gap-12 lg:grid-cols-2">
+      <div class="space-y-8">
+        <NAP />
+        <div>
+          <Heading nivel={3} tamanho="h5" class="mb-3">
+            Horários
+          </Heading>
+          <Horarios />
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+          <Button href={rotas.maps} {...externo} variante="secundario">
+            Abrir no Google Maps<span class="sr-only"> (abre em nova aba)</span>
+          </Button>
+        </div>
+      </div>
+      <Mapa />
+    </div>
+  </Container>
+</Section>

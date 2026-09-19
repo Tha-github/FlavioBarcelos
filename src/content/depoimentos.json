@@ -1,0 +1,10 @@
+[
+  {
+    "nome": "[CONFIRMAR primeiro nome + inicial do sobrenome]",
+    "texto": "[CONFIRMAR depoimento real do Google e autorização de exibição]",
+    "data": "[CONFIRMAR]",
+    "fonte": "Google",
+    "urlOrigem": "[CONFIRMAR URL da avaliação original]",
+    "autorizado": false
+  }
+]

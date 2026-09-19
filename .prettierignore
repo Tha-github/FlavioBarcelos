@@ -1,0 +1,13 @@
+dist
+.astro
+node_modules
+package-lock.json
+prompt.md
+docs/ajustes
+_astro
+politica-de-cookies
+politica-de-privacidade
+termos-de-uso
+index.html
+404.html
+.publicado-raiz.json

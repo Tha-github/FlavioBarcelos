@@ -1,0 +1,35 @@
+---
+import { site } from '../content';
+import { externo } from '../lib/contato';
+import { whatsappLink } from '../lib/whatsapp';
+import Section from './Section.astro';
+import Container from './Container.astro';
+import Heading from './Heading.astro';
+import Button from './Button.astro';
+---
+
+<Section tema="escuro" aria-labelledby="cta-final">
+  <Container>
+    <Heading nivel={2} id="cta-final" class="mx-auto max-w-[22ch]">
+      Seu próximo horário está a um clique.
+    </Heading>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <Button
+        href={whatsappLink(site.mensagens.agendar)}
+        {...externo}
+        variante="primario-claro"
+        data-secao="cta-final"
+      >
+        Agendar horário<span class="sr-only"> (abre em nova aba)</span>
+      </Button>
+      <Button
+        href={whatsappLink(site.mensagens.informacoes)}
+        {...externo}
+        variante="secundario-claro"
+        data-secao="cta-final-informacoes"
+      >
+        Falar no WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+      </Button>
+    </div>
+  </Container>
+</Section>

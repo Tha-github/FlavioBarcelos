@@ -1,0 +1,62 @@
+[
+  {
+    "id": "corte",
+    "nome": "Corte",
+    "descricao": "Cortes modernos, pensados para o seu rosto, o seu fio e a sua rotina.",
+    "categoria": "cabelo"
+  },
+  {
+    "id": "coloracao",
+    "nome": "Coloração",
+    "descricao": "Cor vibrante e uniforme, com técnicas avançadas de aplicação.",
+    "categoria": "cabelo"
+  },
+  {
+    "id": "mechas",
+    "nome": "Mechas",
+    "descricao": "Mechas e luzes que iluminam o cabelo com naturalidade.",
+    "categoria": "cabelo"
+  },
+  {
+    "id": "loiras",
+    "nome": "Loiras",
+    "descricao": "A especialidade da casa: loiros construídos com cuidado em cada etapa.",
+    "categoria": "cabelo"
+  },
+  {
+    "id": "tratamento",
+    "nome": "Tratamento",
+    "descricao": "Tratamentos que devolvem força, brilho e maciez ao fio.",
+    "categoria": "cabelo"
+  },
+  {
+    "id": "alisamento",
+    "nome": "Alisamento",
+    "descricao": "Um cabelo mais liso, alinhado e fácil de arrumar no dia a dia.",
+    "categoria": "cabelo"
+  },
+  {
+    "id": "manicure",
+    "nome": "Manicure",
+    "descricao": "Unhas das mãos bem cuidadas, com acabamento caprichado.",
+    "categoria": "espaco"
+  },
+  {
+    "id": "pedicure",
+    "nome": "Pedicure",
+    "descricao": "Cuidado completo para os pés, do corte à esmaltação.",
+    "categoria": "espaco"
+  },
+  {
+    "id": "depilacao",
+    "nome": "Depilação",
+    "descricao": "Depilação com conforto e atenção a cada detalhe.",
+    "categoria": "espaco"
+  },
+  {
+    "id": "massagem-relaxante",
+    "nome": "Massagem relaxante",
+    "descricao": "Um momento para aliviar tensões e desacelerar.",
+    "categoria": "espaco"
+  }
+]

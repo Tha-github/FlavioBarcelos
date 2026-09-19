@@ -1,0 +1,52 @@
+---
+import { faq, site } from '../content';
+import { externo, pagamentoResumo } from '../lib/contato';
+import { whatsappLink } from '../lib/whatsapp';
+import Section from './Section.astro';
+import Container from './Container.astro';
+import Heading from './Heading.astro';
+import CTAAgendar from './CTAAgendar.astro';
+
+// A resposta "como-agendar" tem um {telefone} que vira link do WhatsApp.
+const [antesTelefone = '', depoisTelefone = ''] = (
+  faq.find((i) => i.respostaDe === 'whatsapp')?.resposta ?? ''
+).split('{telefone}');
+---
+
+<Section fundo="marble" aria-labelledby="faq">
+  <Container>
+    <Heading nivel={2} id="faq">
+      Perguntas frequentes
+    </Heading>
+    <div class="esq-lg mx-auto mt-10 max-w-3xl">
+      {faq.map((item) => (
+        <details class="border-champagne/50 border-t py-5 last:border-b">
+          <summary class="cursor-pointer text-center font-medium lg:text-left">
+            {item.pergunta}
+          </summary>
+          <p class="mt-4">
+            {item.respostaDe === 'pagamento' ? (
+              `${item.resposta} ${pagamentoResumo()}.`
+            ) : item.respostaDe === 'whatsapp' ? (
+              <>
+                {antesTelefone}
+                <a
+                  href={whatsappLink(site.mensagens.informacoes)}
+                  {...externo}
+                  class="text-velvet underline underline-offset-4"
+                  aria-label={`Falar no WhatsApp: ${site.telefone} (abre em nova aba)`}
+                >
+                  {site.telefone}
+                </a>
+                {depoisTelefone}
+              </>
+            ) : (
+              item.resposta
+            )}
+          </p>
+        </details>
+      ))}
+    </div>
+    <CTAAgendar secao="faq" />
+  </Container>
+</Section>

@@ -1,0 +1,112 @@
+---
+// Decorativo, usado apenas no hero. Imagens fornecidas pelo cliente (PNG ou WebP com fundo transparente):
+//   src/assets/hero/pincel-a.png|webp  e  src/assets/hero/pincel-b.png|webp
+// Cada pincel só é renderizado se o arquivo existir; sem os arquivos, nada é exibido. [CONFIRMAR]
+// Os pincéis sobrepõem a foto e a borda inferior do hero. Cada um tem um contêiner de posição e um
+// elemento interno que só recebe transform na animação.
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const arquivos = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/hero/pincel-*.{png,webp}',
+  {
+    eager: true,
+  },
+);
+
+function localizar(nome: 'a' | 'b') {
+  const chave = Object.keys(arquivos).find(
+    (k) => /pincel-[ab]\./.exec(k)?.[0] === `pincel-${nome}.`,
+  );
+  return chave ? arquivos[chave]?.default : undefined;
+}
+const a = localizar('a');
+const b = localizar('b');
+---
+
+{(a || b) && (
+  <div class="pinceis pointer-events-none absolute inset-0 z-20" aria-hidden="true" data-pinceis>
+    <div class="px-gutter relative mx-auto h-full max-w-site lg:grid lg:grid-cols-12 lg:gap-8">
+      {b && (
+        <div class="pincel-pos absolute top-[6.5rem] right-2 w-[90px] sm:right-6 lg:top-[9rem] lg:right-auto lg:left-[calc(58.33%+0.25rem)] lg:w-[150px] max-[359px]:hidden">
+          <div class="pincel pincel-b" style="--rot: 20deg;">
+            <Picture
+              src={b}
+              formats={['avif', 'webp']}
+              widths={[90, 150, 300]}
+              sizes="(min-width: 1024px) 150px, 90px"
+              alt=""
+              width={b.width}
+              height={b.height}
+              loading="lazy"
+              decoding="async"
+              class="h-auto w-full"
+            />
+          </div>
+        </div>
+      )}
+      {a && (
+        <div class="pincel-pos absolute right-3 bottom-[-0.5rem] w-[150px] lg:right-auto lg:bottom-[-0.5rem] lg:left-[calc(58.33%+1rem)] lg:w-[220px] xl:w-[260px]">
+          <div class="pincel pincel-a" style="--rot: -25deg;">
+            <Picture
+              src={a}
+              formats={['avif', 'webp']}
+              widths={[150, 260, 520]}
+              sizes="(min-width: 1280px) 260px, (min-width: 1024px) 220px, 150px"
+              alt=""
+              width={a.width}
+              height={a.height}
+              loading="lazy"
+              decoding="async"
+              class="h-auto w-full"
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+)}
+
+<style is:global>
+  .pincel {
+    transform: translateY(0) rotate(var(--rot));
+    /* Sombra para fundo claro (silk). */
+    filter: drop-shadow(0 14px 16px rgb(33 47 82 / 0.25));
+    animation: pincel-flutuar 6.5s ease-in-out infinite alternate;
+    animation-play-state: paused;
+    will-change: transform;
+  }
+  .pincel-b {
+    opacity: 0.9;
+    animation-duration: 6s;
+    animation-delay: -3.2s;
+  }
+  .pinceis[data-ativo='true'] .pincel {
+    animation-play-state: running;
+  }
+  @keyframes pincel-flutuar {
+    from {
+      transform: translateY(-10px) rotate(calc(var(--rot) - 3deg));
+    }
+    to {
+      transform: translateY(10px) rotate(calc(var(--rot) + 3deg));
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pincel {
+      animation: none;
+      will-change: auto;
+    }
+  }
+</style>
+
+<script>
+  // Único JS dos pincéis: pausa a animação quando o hero sai da viewport.
+  const raiz = document.querySelector<HTMLElement>('[data-pinceis]');
+  const hero = raiz?.parentElement;
+  if (raiz && hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entrada]) => {
+      raiz.dataset.ativo = String(entrada?.isIntersecting ?? false);
+    }).observe(hero);
+  }
+</script>

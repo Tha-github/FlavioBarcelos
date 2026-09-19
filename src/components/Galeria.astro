@@ -1,0 +1,88 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+import { galeria, site } from '../content';
+import { externo } from '../lib/contato';
+import Section from './Section.astro';
+import Container from './Container.astro';
+import Heading from './Heading.astro';
+import Button from './Button.astro';
+import CTAAgendar from './CTAAgendar.astro';
+import GaleriaFeed from './GaleriaFeed';
+import type { FotoGaleriaOtimizada } from './galeria-tipos';
+
+const modulos = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/galeria/*.{jpg,jpeg,png,webp,avif}',
+  { eager: true },
+);
+
+const autorizadas = galeria.filter((f) => f.autorizado);
+
+// Verificações de build: arquivo existente, alt preenchido e único.
+const vistos = new Set<string>();
+for (const f of autorizadas) {
+  const alt = f.alt.trim();
+  if (!alt) throw new Error(`galeria.json: alt vazio em "${f.arquivo}".`);
+  if (vistos.has(alt.toLowerCase()))
+    throw new Error(`galeria.json: alt duplicado ("${alt}") em "${f.arquivo}".`);
+  vistos.add(alt.toLowerCase());
+  if (!modulos[`../assets/galeria/${f.arquivo}`])
+    throw new Error(`galeria.json: arquivo "${f.arquivo}" não existe em src/assets/galeria/.`);
+}
+
+const fotos: FotoGaleriaOtimizada[] = await Promise.all(
+  autorizadas.map(async (f, i) => {
+    const meta = modulos[`../assets/galeria/${f.arquivo}`]!.default;
+    const larguras = [300, 450, 600];
+    const [thumbAvif, thumbWebp] = await Promise.all(
+      (['avif', 'webp'] as const).map((format) =>
+        getImage({ src: meta, format, widths: larguras, width: 600 }),
+      ),
+    );
+    // Lightbox: até 1200px no lado maior.
+    const paisagem = meta.width >= meta.height;
+    const largura = paisagem ? 1200 : Math.round((1200 * meta.width) / meta.height);
+    const altura = Math.round((largura * meta.height) / meta.width);
+    const [fullAvif, fullWebp] = await Promise.all(
+      (['avif', 'webp'] as const).map((format) => getImage({ src: meta, format, width: largura })),
+    );
+    return {
+      id: `foto-${i}`,
+      alt: f.alt,
+      thumb: {
+        avif: thumbAvif!.srcSet.attribute,
+        webp: thumbWebp!.srcSet.attribute,
+        src: thumbWebp!.src,
+        largura: 600,
+        altura: Math.round((600 * meta.height) / meta.width),
+      },
+      full: {
+        avif: fullAvif!.src,
+        webp: fullWebp!.src,
+        src: fullWebp!.src,
+        largura,
+        altura,
+      },
+    };
+  }),
+);
+---
+
+{fotos.length > 0 && (
+  <Section fundo="marble" aria-labelledby="galeria">
+    <Container>
+      <Heading nivel={2} id="galeria">
+        Cabelos feitos no studio
+      </Heading>
+      <div class="mt-12">
+        <GaleriaFeed client:visible fotos={fotos} />
+      </div>
+      <p class="text-step--1 mt-8">Imagens publicadas com autorização das clientes.</p>
+      <CTAAgendar secao="galeria" class="mt-6">
+        <Button href={site.links.instagram} {...externo} variante="secundario">
+          Ver mais no Instagram<span class="sr-only"> (abre em nova aba)</span>
+        </Button>
+      </CTAAgendar>
+    </Container>
+  </Section>
+)}

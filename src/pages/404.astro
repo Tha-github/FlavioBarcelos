@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/Container.astro';
+import Heading from '../components/Heading.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout title="Página não encontrada">
+  <meta slot="head" name="robots" content="noindex, nofollow" />
+  <Container class="py-section">
+    <Heading nivel={1}>Página não encontrada</Heading>
+    <p class="mt-6">
+      Este endereço não está disponível. Volte ao início para conhecer o estúdio ou agendar.
+    </p>
+    <Button href="/" class="mt-8">
+      Voltar para o início
+    </Button>
+  </Container>
+</BaseLayout>

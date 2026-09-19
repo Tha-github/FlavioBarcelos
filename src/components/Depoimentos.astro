@@ -1,0 +1,62 @@
+---
+import { depoimentos, site } from '../content';
+import Section from './Section.astro';
+import Container from './Container.astro';
+import Heading from './Heading.astro';
+import CTAAgendar from './CTAAgendar.astro';
+
+const autorizados = depoimentos.filter((depoimento) => depoimento.autorizado === true);
+const resumo = site.avaliacoesGoogle;
+const formatarData = (data: string) =>
+  new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(`${data}T00:00:00Z`));
+---
+
+{autorizados.length > 0 && (
+  <Section fundo="pearl" aria-labelledby="depoimentos">
+    <Container>
+      <Heading nivel={2} id="depoimentos">
+        O que dizem as clientes
+      </Heading>
+      {resumo && (
+        <p class="mt-6">
+          {resumo.notaMedia.toLocaleString('pt-BR')} de 5 · {resumo.total.toLocaleString('pt-BR')}{' '}
+          avaliações no Google. Atualizado em{' '}
+          <time datetime={resumo.atualizadoEm}>{formatarData(resumo.atualizadoEm)}</time>.
+        </p>
+      )}
+      <ul class="divide-champagne/40 mx-auto mt-8 max-w-3xl divide-y">
+        {autorizados.map((depoimento) => (
+          <li class="py-8">
+            <figure>
+              <blockquote class="font-display text-step-2">
+                <p>{depoimento.texto}</p>
+              </blockquote>
+              <figcaption class="mt-4">
+                {depoimento.nome} ·{' '}
+                <time datetime={depoimento.data}>{formatarData(depoimento.data)}</time> ·{' '}
+                <a
+                  href={depoimento.urlOrigem}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline underline-offset-4"
+                  aria-label={`Ver avaliação de ${depoimento.nome} no Google (abre em nova aba)`}
+                >
+                  {depoimento.fonte}
+                </a>
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+      <a
+        href={site.links.google}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-6 inline-flex min-h-11 items-center underline underline-offset-4"
+      >
+        Ver todas as avaliações no Google<span class="sr-only"> (abre em nova aba)</span>
+      </a>
+      <CTAAgendar secao="depoimentos" />
+    </Container>
+  </Section>
+)}

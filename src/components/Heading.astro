@@ -1,0 +1,31 @@
+---
+interface Props {
+  /** Nível semântico (h1–h6), independente do tamanho visual. */
+  nivel: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Tamanho visual. Por padrão segue o nível. */
+  tamanho?: 'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  class?: string;
+  id?: string;
+}
+
+const { nivel, tamanho, class: className, ...rest } = Astro.props;
+
+const Tag = `h${nivel}` as const;
+const visual = tamanho ?? (`h${nivel}` as const);
+
+// Escala modular 1.25 (classes estáticas para o Tailwind).
+const tamanhos = {
+  display:
+    'font-display font-normal tracking-titulo leading-[1.05] text-step-4 sm:text-step-5 lg:text-step-6',
+  h1: 'font-display font-normal tracking-titulo leading-[1.1] text-step-5',
+  h2: 'font-display font-normal tracking-titulo leading-[1.15] text-step-4',
+  h3: 'font-display font-normal tracking-titulo leading-[1.2] text-step-3',
+  h4: 'font-display font-medium tracking-titulo leading-[1.25] text-step-2',
+  h5: 'font-sans font-bold leading-snug text-step-1',
+  h6: 'font-sans font-bold leading-snug text-step-0',
+} as const;
+---
+
+<Tag class:list={[tamanhos[visual], 'text-balance', className]} {...rest}>
+  <slot />
+</Tag>
