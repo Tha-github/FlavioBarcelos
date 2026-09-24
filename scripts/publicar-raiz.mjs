@@ -13,7 +13,7 @@ import path from 'node:path';
 const DIST = 'dist';
 const MANIFESTO = '.publicado-raiz.json';
 // Prefixos absolutos do site gerado que precisam virar relativos.
-const ESTATICOS = ['_astro/', 'reels/', 'mapa-placeholder.svg', 'politica-de-cookies', 'politica-de-privacidade', 'termos-de-uso'];
+const ESTATICOS = ['_astro/', 'reels/', 'mapa-placeholder.svg', 'favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'apple-touch-icon.png', 'politica-de-cookies', 'politica-de-privacidade', 'termos-de-uso'];
 
 async function listar(dir, base = dir) {
   const itens = await readdir(dir, { withFileTypes: true });

@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 import type { ReelOtimizado } from './galeria-tipos';
 
 const seta =
-  'absolute top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-velvet bg-silk text-velvet hover:bg-velvet hover:text-silk disabled:cursor-default disabled:opacity-40 disabled:hover:bg-silk disabled:hover:text-velvet';
+  'btn-ouro absolute top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-onyx disabled:cursor-default disabled:opacity-40 disabled:hover:filter-none';
 const botaoVideo =
-  'flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-champagne bg-onyx text-pearl hover:bg-velvet';
+  'anel-ouro flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-onyx text-pearl hover:bg-pearl hover:text-onyx';
 
 export default function ReelsPlayer({ reels }: { reels: ReelOtimizado[] }) {
   const total = reels.length;
@@ -163,7 +163,7 @@ export default function ReelsPlayer({ reels }: { reels: ReelOtimizado[] }) {
           onClick={alternar}
         >
           {!tocando && (
-            <span class="flex h-14 w-14 items-center justify-center rounded-full border border-champagne bg-onyx/80 text-pearl">
+            <span class="anel-ouro relative flex h-14 w-14 items-center justify-center rounded-full bg-onyx/80 text-pearl">
               <svg
                 width="22"
                 height="22"
@@ -264,7 +264,7 @@ export default function ReelsPlayer({ reels }: { reels: ReelOtimizado[] }) {
             >
               <span
                 class={`block h-2 rounded-full transition-[width] duration-300 motion-reduce:transition-none ${
-                  n === indice ? 'w-6 bg-velvet' : 'w-2 bg-velvet/60 group-hover:bg-velvet'
+                  n === indice ? 'w-6 bg-fg' : 'w-2 bg-fg/50 group-hover:bg-fg'
                 }`}
               />
             </button>

@@ -6,7 +6,7 @@ const DIAS = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
 export const externo = { target: '_blank', rel: 'noopener noreferrer' } as const;
 
 /** "09:00" → "9h", "09:30" → "9h30". */
-function hora(valor: string): string {
+export function hora(valor: string): string {
   const [h = '', m = ''] = valor.split(':');
   return `${Number(h)}h${m === '00' ? '' : m}`;
 }

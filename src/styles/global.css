@@ -3,6 +3,7 @@
 /* Fontes auto-hospedadas: apenas subset latin e os pesos usados (font-display: swap). */
 @import '@fontsource/bodoni-moda/latin-400.css';
 @import '@fontsource/bodoni-moda/latin-500.css';
+@import '@fontsource/bodoni-moda/latin-400-italic.css';
 @import '@fontsource/manrope/latin-400.css';
 @import '@fontsource/manrope/latin-500.css';
 @import '@fontsource/manrope/latin-700.css';
@@ -10,13 +11,25 @@
 /* ---------- Tokens (seção 2.3 do prompt.md) ---------- */
 :root {
   /* Cores */
-  /* Paleta "Luxe & Elegant" (ajuste de cores): valores aproximados lidos da imagem enviada. */
-  --onyx: #000000; /* texto e superfícies muito escuras */
-  --velvet: #212f52; /* marinho: botões, títulos, links e CTA final */
-  --marble: #e9e6e1; /* fundo de seções alternadas */
-  --pearl: #ffffff; /* fundo principal claro */
-  --champagne: #d2b589; /* acento: detalhes, bordas finas e ícones (não usar em texto) */
-  --silk: #eee6db; /* hero, header e rodapé */
+  /* Paleta (ajuste A5): preto, branco, ouro (acento) e areia. */
+  --onyx: #000000; /* seções pretas e texto sobre areia */
+  --pearl: #ffffff; /* texto sobre preto, botões e fundos brancos */
+  --champagne: #d2b589; /* acento decorativo (bordas finas e detalhes), nunca em texto */
+  --stone: #d8d4c9; /* fundo das demais seções, do rodapé e do corpo da página */
+
+  /* Dourado dos botões: mesmas cores do logo (escuro, médio e brilho). */
+  --gradiente-ouro: linear-gradient(
+    135deg,
+    #b88c2c 0%,
+    #d4b059 30%,
+    #fef3b0 55%,
+    #d4b059 78%,
+    #b88c2c 100%
+  );
+
+  /* Cores por seção: texto principal (--fg) e o que fica sobre ele (--on-fg). Mudam em .tema-*. */
+  --fg: #000000;
+  --on-fg: #ffffff;
 
   /* Tipografia */
   --fonte-display: 'Bodoni Moda', Georgia, 'Times New Roman', serif;
@@ -58,11 +71,11 @@
 /* ---------- Mapeamento no Tailwind ---------- */
 @theme inline {
   --color-onyx: var(--onyx);
-  --color-velvet: var(--velvet);
-  --color-marble: var(--marble);
   --color-pearl: var(--pearl);
   --color-champagne: var(--champagne);
-  --color-silk: var(--silk);
+  --color-stone: var(--stone);
+  --color-fg: var(--fg);
+  --color-on-fg: var(--on-fg);
 
   --font-display: var(--fonte-display);
   --font-sans: var(--fonte-corpo);
@@ -98,7 +111,7 @@ html {
 }
 
 body {
-  background-color: var(--pearl);
+  background-color: var(--stone);
   color: var(--onyx);
   font-family: var(--fonte-corpo);
   font-weight: 400;
@@ -108,14 +121,70 @@ body {
 }
 
 /* Temas de seção */
+/* Seções pretas: texto branco. Seções areia e superfícies claras: texto preto. */
+.tema-preto {
+  --fg: var(--pearl);
+  --on-fg: var(--onyx);
+  --focus-ring: var(--pearl);
+}
+.tema-stone,
 .tema-claro {
+  --fg: var(--onyx);
+  --on-fg: var(--pearl);
   --focus-ring: var(--onyx);
 }
-.tema-escuro {
-  --focus-ring: var(--marble);
+
+/* Botões dourados com gradiente, texto preto. Linhas, molduras e anéis com o mesmo gradiente. */
+@layer components {
+  /* Molduras retas e linhas (usar junto de border, border-t, border-b etc.). */
+  .borda-ouro {
+    border-image: var(--gradiente-ouro) 1;
+  }
+  /* Divisórias entre itens (usar junto de divide-y). */
+  .divide-ouro > :not(:first-child) {
+    border-image: var(--gradiente-ouro) 1;
+  }
+  /* Contorno arredondado com gradiente (botões redondos e em pílula). O elemento precisa ser posicionado. */
+  .anel-ouro {
+    border: var(--anel, 1px) solid transparent;
+  }
+  .anel-ouro::before {
+    content: '';
+    position: absolute;
+    inset: calc(var(--anel, 1px) * -1);
+    padding: var(--anel, 1px);
+    border-radius: inherit;
+    background: var(--gradiente-ouro);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .btn-ouro,
+  .btn-ouro-hover:hover {
+    background-image: var(--gradiente-ouro);
+  }
+  .btn-ouro:hover {
+    filter: brightness(1.08);
+  }
 }
-.tema-silk {
-  --focus-ring: var(--velvet);
+
+/* Texto dourado em itálico (destaque do título do hero): gradiente do logo aplicado ao texto. */
+.texto-ouro {
+  font-style: italic;
+  white-space: nowrap;
+  background-image: var(--gradiente-ouro);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 /* Foco visível em todo elemento interativo */

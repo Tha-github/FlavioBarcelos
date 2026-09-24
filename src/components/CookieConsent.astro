@@ -6,7 +6,7 @@ import { site } from '../content/site';
   id="cookie-banner"
   aria-labelledby="cookie-titulo"
   hidden
-  class="tema-claro fixed inset-x-0 bottom-0 z-40 max-h-[45dvh] overflow-y-auto border-t border-champagne bg-pearl p-5 text-onyx"
+  class="tema-claro fixed inset-x-0 bottom-0 z-40 max-h-[45dvh] overflow-y-auto border-t borda-ouro bg-pearl p-5 text-onyx"
 >
   <div class="mx-auto max-w-site">
     <h2 id="cookie-titulo" class="font-medium">
@@ -41,7 +41,7 @@ import { site } from '../content/site';
   id="cookie-preferences"
   aria-labelledby="preferences-titulo"
   aria-describedby="preferences-descricao"
-  class="tema-claro m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-xl overflow-y-auto border border-champagne bg-pearl p-6 text-onyx backdrop:bg-onyx/60"
+  class="tema-claro m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-xl overflow-y-auto border borda-ouro bg-pearl p-6 text-onyx backdrop:bg-onyx/60"
 >
   <h2 id="preferences-titulo" class="font-display text-step-3">
     Preferências de cookies
@@ -161,14 +161,16 @@ import { site } from '../content/site';
 </script>
 <style>
   .consent-action {
-    border: 1px solid var(--onyx);
+    background-image: var(--gradiente-ouro);
+    color: var(--onyx);
+    border: 0;
     border-radius: 999px;
     padding: 0.65rem 1.1rem;
     font-weight: 500;
     cursor: pointer;
   }
   .consent-action:hover {
-    background: var(--marble);
+    filter: brightness(1.08);
   }
   .categoria {
     display: flex;

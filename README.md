@@ -1,4 +1,4 @@
-# Studio Flávio Barcelos: site
+# Estúdio Flávio Barcelos: site
 
 Site estático (Astro). O agendamento e o contato acontecem pelo WhatsApp.
 

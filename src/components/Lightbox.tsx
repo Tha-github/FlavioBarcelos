@@ -9,7 +9,7 @@ interface Props {
 }
 
 const botao =
-  'flex h-11 w-11 items-center justify-center rounded-full border border-champagne bg-onyx text-pearl hover:bg-velvet cursor-pointer';
+  'flex h-11 w-11 items-center justify-center anel-ouro relative rounded-full bg-onyx text-pearl hover:bg-pearl hover:text-onyx cursor-pointer';
 
 function Imagem({ foto, eager }: { foto: FotoGaleriaOtimizada; eager?: boolean }) {
   return (
@@ -68,7 +68,7 @@ export default function Lightbox({ fotos, indice, onIr, onFechar }: Props) {
         }
       }}
     >
-      <div class="tema-escuro flex w-full max-w-[1240px] items-center justify-between px-4 py-3">
+      <div class="tema-preto flex w-full max-w-[1240px] items-center justify-between px-4 py-3">
         <p role="status" aria-live="polite" class="text-step--1">
           {indice + 1} de {total}
         </p>
@@ -89,7 +89,7 @@ export default function Lightbox({ fotos, indice, onIr, onFechar }: Props) {
         </button>
       </div>
 
-      <div class="tema-escuro flex min-h-0 w-full flex-1 items-center justify-center gap-2 px-2 sm:gap-6 sm:px-6">
+      <div class="tema-preto flex min-h-0 w-full flex-1 items-center justify-center gap-2 px-2 sm:gap-6 sm:px-6">
         <button
           type="button"
           class={`${botao} shrink-0 max-sm:absolute max-sm:top-1/2 max-sm:left-2 max-sm:z-10`}

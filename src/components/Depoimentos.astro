@@ -12,7 +12,7 @@ const formatarData = (data: string) =>
 ---
 
 {autorizados.length > 0 && (
-  <Section fundo="pearl" aria-labelledby="depoimentos">
+  <Section tema="stone" aria-labelledby="depoimentos">
     <Container>
       <Heading nivel={2} id="depoimentos">
         O que dizem as clientes
@@ -24,7 +24,7 @@ const formatarData = (data: string) =>
           <time datetime={resumo.atualizadoEm}>{formatarData(resumo.atualizadoEm)}</time>.
         </p>
       )}
-      <ul class="divide-champagne/40 mx-auto mt-8 max-w-3xl divide-y">
+      <ul class="divide-ouro mx-auto mt-8 max-w-3xl divide-y">
         {autorizados.map((depoimento) => (
           <li class="py-8">
             <figure>

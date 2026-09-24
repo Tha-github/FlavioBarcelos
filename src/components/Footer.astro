@@ -1,34 +1,60 @@
 ---
+import { Picture } from 'astro:assets';
 import { site } from '../content';
+import logo from '../assets/logo-rodape.png';
 import { externo } from '../lib/contato';
+import { whatsappLink } from '../lib/whatsapp';
 import Container from './Container.astro';
-import Logo from './Logo.astro';
 import NAP from './NAP.astro';
 import Horarios from './Horarios.astro';
 
-const link = 'text-velvet inline-flex min-h-11 items-center underline-offset-4 hover:underline';
+const linkRedes = 'text-fg inline-block py-0.5 underline-offset-4 hover:underline';
+const link = 'text-fg inline-flex min-h-11 items-center underline-offset-4 hover:underline';
 ---
 
-<footer class="tema-silk esq-lg border-velvet/20 bg-silk text-onyx border-t py-12 pb-28 text-center lg:pb-12 lg:text-left">
+<footer class="tema-stone esq-lg borda-ouro bg-stone text-onyx border-t py-12 pb-28 text-center lg:pb-12 lg:text-left">
   <Container class="flex flex-col items-center gap-8 lg:items-start">
-    <a href="#conteudo" class="text-velvet inline-block">
-      <Logo />
+    <a href="#conteudo" class="inline-block" aria-label={`${site.nome}, voltar ao conteúdo`}>
+      <Picture
+        src={logo}
+        formats={['avif', 'webp']}
+        widths={[208, 416, 624, 832]}
+        sizes="144px"
+        alt=""
+        width={logo.width}
+        height={logo.height}
+        loading="lazy"
+        quality={95}
+        class="h-auto w-36"
+      />
     </a>
-    <div class="flex flex-col items-center gap-8 lg:grid lg:w-full lg:grid-cols-2 lg:items-start lg:gap-10">
-      <NAP />
+    <div class="flex flex-col items-center gap-8 lg:grid lg:w-full lg:grid-cols-3 lg:items-start lg:gap-10">
+      <NAP semWhatsapp />
       <div>
         <h2 class="mb-3 font-medium">Horários</h2>
         <Horarios />
       </div>
+      <div>
+        <h2 class="mb-2 font-medium">Redes</h2>
+        <ul>
+          <li>
+            <a href={whatsappLink(site.mensagens.informacoes)} {...externo} class={linkRedes}>
+              WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+            </a>
+          </li>
+          <li>
+            <a href={site.links.instagram} {...externo} class={linkRedes}>
+              Instagram<span class="sr-only"> (abre em nova aba)</span>
+            </a>
+          </li>
+          <li>
+            <a href={site.links.google} {...externo} class={linkRedes}>
+              Perfil no Google<span class="sr-only"> (abre em nova aba)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <nav aria-label="Redes sociais" class="flex flex-wrap justify-center gap-x-6 lg:justify-start">
-      <a href={site.links.instagram} {...externo} class={link}>
-        Instagram<span class="sr-only"> (abre em nova aba)</span>
-      </a>
-      <a href={site.links.google} {...externo} class={link}>
-        Perfil no Google<span class="sr-only"> (abre em nova aba)</span>
-      </a>
-    </nav>
     <nav
       aria-label="Informações legais"
       class="text-step--1 flex flex-wrap justify-center gap-x-6 lg:justify-start"
@@ -47,10 +73,14 @@ const link = 'text-velvet inline-flex min-h-11 items-center underline-offset-4 h
       </button>
     </nav>
     <p class="text-step--1">
-      {site.empresa.nomeCivil} — CNPJ {site.empresa.cnpj}
-    </p>
-    <p class="text-step--1">
-      © {new Date().getFullYear()} {site.nome}
+      © {new Date().getFullYear()} {site.nome} | Site criado por{' '}
+      <a
+        href="https://topsitebr.com.br"
+        {...externo}
+        class="text-fg font-bold underline-offset-4 hover:underline"
+      >
+        Top Site<span class="sr-only"> (abre em nova aba)</span>
+      </a>
     </p>
   </Container>
 </footer>

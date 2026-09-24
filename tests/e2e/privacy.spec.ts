@@ -147,7 +147,7 @@ test('documentos, cabeçalhos, links externos seguros e 404 noindex', async ({ p
   }
   for (const slug of ['politica-de-privacidade', 'termos-de-uso', 'politica-de-cookies']) {
     await page.goto('/' + slug);
-    await expect(page.getByText('[CONFIRMAR — revisão jurídica]', { exact: true })).toBeVisible();
+    await expect(page.getByText('[CONFIRMAR — revisão jurídica]')).toHaveCount(0);
     await expect(
       page.getByRole('heading', { name: 'Direitos do titular e solicitações' }),
     ).toBeVisible();

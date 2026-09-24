@@ -5,7 +5,7 @@
 ## Dados estruturados (JSON-LD)
 
 - [ ] Nenhuma referência a antes/depois, comparador ou "Resultados" em qualquer JSON-LD, título ou descrição.
-- [ ] `ImageGallery` "Cabelos feitos no Studio Flávio Barcelos" com até as 12 primeiras das 20 fotos autorizadas (`contentUrl` absoluta e `description` = `alt`). Só aparece com fotos reais e com `SITE_ORIGIN` (ou `site` no `astro.config.mjs`) definidos no build.
+- [ ] `ImageGallery` "Cabelos feitos no Estúdio Flávio Barcelos" com até as 12 primeiras das 20 fotos autorizadas (`contentUrl` absoluta e `description` = `alt`). Só aparece com fotos reais e com `SITE_ORIGIN` (ou `site` no `astro.config.mjs`) definidos no build.
 - [ ] Um `VideoObject` por reel real (`name`, `description`, `thumbnailUrl`, `uploadDate`, `duration`, `contentUrl`, todos absolutos). Reels com `[CONFIRMAR]` ficam de fora.
 - [ ] Manter HairSalon, FAQPage, WebSite e WebPage da T7 e atualizar o que depender da nova estrutura de seções.
 - [ ] Validar em https://validator.schema.org e no Rich Results Test (https://search.google.com/test/rich-results) com a URL publicada.

@@ -1,21 +1,33 @@
 ---
 import { site } from '../content';
-import { enderecoCompleto, externo } from '../lib/contato';
+import { externo } from '../lib/contato';
 import { whatsappLink } from '../lib/whatsapp';
+interface Props {
+  /** Omite a linha do WhatsApp (o rodapé mostra o contato na coluna Redes). */
+  semWhatsapp?: boolean;
+}
+const { semWhatsapp = false } = Astro.props;
+const e = site.endereco;
 ---
 
 <address class="not-italic" data-nap>
   <p class="font-medium">{site.nome}</p>
-  <p class="mt-2">{enderecoCompleto()}</p>
   <p class="mt-2">
-    WhatsApp:{' '}
-    <a
-      class="text-velvet inline-flex min-h-11 items-center underline underline-offset-4"
-      href={whatsappLink(site.mensagens.informacoes)}
-      {...externo}
-      aria-label={`Falar no WhatsApp: ${site.telefone} (abre em nova aba)`}
-    >
-      {site.telefone}
-    </a>
+    {e.rua}, {e.numero} • {e.sala}
+    <br />
+    {e.bairro} — {e.cidade}, {e.uf}
   </p>
+  {!semWhatsapp && (
+    <p class="mt-2">
+      WhatsApp:{' '}
+      <a
+        class="text-fg inline-flex min-h-11 items-center underline underline-offset-4"
+        href={whatsappLink(site.mensagens.informacoes)}
+        {...externo}
+        aria-label={`Falar no WhatsApp: ${site.telefone} (abre em nova aba)`}
+      >
+        {site.telefone}
+      </a>
+    </p>
+  )}
 </address>

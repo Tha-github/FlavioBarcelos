@@ -7,13 +7,13 @@ import Container from './Container.astro';
 import Heading from './Heading.astro';
 import CTAAgendar from './CTAAgendar.astro';
 
-// Imagens 4:5 em src/assets/foco/: foco-1.jpg (ou png, webp, avif), foco-2.* e foco-3.*.
+// Duas imagens 4:5 em src/assets/foco/: foco-1.jpg (antes) e foco-2.jpg (depois); também png, webp ou avif.
 // Enquanto o arquivo real não existir, vale o placeholder foco-N-placeholder.webp.
 const arquivos = import.meta.glob<{ default: ImageMetadata }>(
   '../assets/foco/foco-*.{jpg,jpeg,png,webp,avif}',
   { eager: true },
 );
-const imagens = [1, 2, 3].flatMap((n) => {
+const imagens = [1, 2].flatMap((n) => {
   const nomeDe = (k: string) => k.split('/').pop() ?? '';
   const chaves = Object.keys(arquivos);
   const real = chaves.find((k) => nomeDe(k).startsWith(`foco-${n}.`));
@@ -24,38 +24,50 @@ const imagens = [1, 2, 3].flatMap((n) => {
 });
 ---
 
-<Section fundo="pearl" aria-labelledby="cabelos">
+<Section tema="stone" aria-labelledby="cabelos">
   <Container>
-    <!-- Sequência: hero em silk, então marble para separar. -->
     <Heading nivel={2} id="cabelos">
-      Cabelo é o nosso foco
+      Cabelos by Flávio Barcelos
     </Heading>
     <p class="text-step-1 mt-6">
-      Antes de qualquer química, olhamos o seu fio: o que ele precisa e o que ele aguenta. O
-      atendimento é sem pressa e, no final, você leva a orientação para manter o resultado em casa.
+      Antes de qualquer procedimento químico, Flávio avalia as condições do seu cabelo para entender
+      suas necessidades e indicar o tratamento mais adequado. A avaliação pode ser realizada
+      presencialmente ou pelo WhatsApp, trazendo mais segurança e confiança antes de qualquer
+      transformação.
     </p>
-    <ul class="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-3 md:grid-cols-3 md:gap-6">
-      {imagens.map(({ n, meta }) => (
-        <li class={n === 1 ? 'col-span-2 md:col-span-1' : ''}>
-          <Picture
-            src={meta}
-            formats={['avif', 'webp']}
-            widths={[320, 480, 640, 800]}
-            sizes={
-              n === 1
-                ? '(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw'
-                : '(min-width: 1280px) 400px, (min-width: 768px) 33vw, 50vw'
-            }
-            alt={site.focoAlts[n - 1] ?? ''}
-            width={meta.width}
-            height={meta.height}
-            loading="lazy"
-            decoding="async"
-            class="aspect-[4/5] h-auto w-full object-cover"
-          />
-        </li>
-      ))}
-    </ul>
+    <div class="mx-auto mt-12 flex max-w-3xl items-center justify-center gap-3 md:gap-6">
+      <!-- "Antes" fica à esquerda e "Depois" à direita; o sentido da palavra acompanha a lateral. -->
+      <span
+        class="font-display text-step-2 md:text-step-3 tracking-titulo [writing-mode:vertical-rl] rotate-180"
+        aria-hidden="true"
+      >
+        Antes
+      </span>
+      <ul class="grid min-w-0 flex-1 grid-cols-2 gap-3 md:gap-6">
+        {imagens.map(({ n, meta }) => (
+          <li>
+            <Picture
+              src={meta}
+              formats={['avif', 'webp']}
+              widths={[240, 360, 480, 640]}
+              sizes="(min-width: 768px) 320px, 45vw"
+              alt={site.focoAlts[n - 1] ?? ''}
+              width={meta.width}
+              height={meta.height}
+              loading="lazy"
+              decoding="async"
+              class="aspect-[4/5] h-auto w-full object-cover"
+            />
+          </li>
+        ))}
+      </ul>
+      <span
+        class="font-display text-step-2 md:text-step-3 tracking-titulo [writing-mode:vertical-rl]"
+        aria-hidden="true"
+      >
+        Depois
+      </span>
+    </div>
     <CTAAgendar secao="cabelo-foco" />
   </Container>
 </Section>

@@ -4,7 +4,7 @@ Guia simples. Sempre use **estes nomes e estas pastas**. O site cuida do tamanho
 
 > **Regra de ouro:** só publique foto ou vídeo de cliente com **autorização de uso de imagem** assinada.
 
-A foto do banner (topo do site) **não** entra aqui: continua como espaço reservado até o Flávio escolher.
+A foto do banner (topo do site) é `src/assets/hero/flavio.png`: PNG com fundo transparente, do Flávio. Para trocar, substitua esse arquivo pelo novo (mesmo nome) e ajuste o texto `heroAlt` em `src/content/site.ts`. Um degradê preto no pé da imagem esconde o corte.
 
 ---
 
@@ -14,13 +14,33 @@ A foto do banner (topo do site) **não** entra aqui: continua como espaço reser
 2. **Apague** o arquivo `retrato-placeholder.webp` da mesma pasta.
 3. Abra `src/content/site.ts` e, em `sobre`, troque o texto de `retratoAlt` por uma descrição da foto (ex.: "Flávio Barcelos sorrindo, de avental preto, no salão"). Apague o `[CONFIRMAR]`.
 
-## 2. Três imagens de "Cabelo é o nosso foco"
+## 2. Duas imagens de "Cabelos by Flávio Barcelos" (antes e depois)
 
-1. Coloque 3 fotos **verticais (4:5)**, cerca de 1200 × 1500 px, em `src/assets/foco/` com os nomes exatos **`foco-1.jpg`**, **`foco-2.jpg`** e **`foco-3.jpg`** (a extensão pode ser `.png`, `.webp` ou `.avif`).
-2. **Apague** `foco-1-placeholder.webp`, `foco-2-placeholder.webp` e `foco-3-placeholder.webp`.
-3. Em `src/content/site.ts`, troque os 3 textos de `focoAlts` por descrições reais (uma por imagem, na mesma ordem). Apague os `[CONFIRMAR]`.
+A seção mostra **duas** imagens lado a lado: "Antes" escrito no lado esquerdo e "Depois" no lado direito.
 
-## 3. Galeria "Cabelos feitos no studio" (hoje 15 fotos)
+1. Coloque 2 fotos **verticais (4:5)**, cerca de 1200 × 1500 px, em `src/assets/foco/` com os nomes exatos **`foco-1.jpg`** (antes) e **`foco-2.jpg`** (depois). A extensão pode ser `.png`, `.webp` ou `.avif`.
+2. **Apague** `foco-1-placeholder.webp` e `foco-2-placeholder.webp`.
+3. Em `src/content/site.ts`, troque os 2 textos de `focoAlts` por descrições reais (o primeiro do antes, o segundo do depois). Apague os `[CONFIRMAR]`.
+
+## 2b. Profissionais do estúdio (5 fotos)
+
+1. Coloque as 5 fotos **verticais (4:5)**, cerca de 1200 × 1500 px, em `src/assets/profissionais/` (ex.: `flavio-barcelos.jpg`).
+2. **Apague** os arquivos `placeholder-1.webp` a `placeholder-5.webp` da mesma pasta.
+3. Abra `src/content/profissionais.json`. Cada profissional é um bloco assim:
+
+```json
+{
+  "id": "flavio-barcelos",
+  "nome": "Flávio Barcelos",
+  "area": "Cabelos",
+  "foto": "flavio-barcelos.jpg",
+  "alt": "Flávio Barcelos sorrindo, de avental de couro, no salão"
+}
+```
+
+Os nomes e as áreas dos 5 profissionais já estão preenchidos. Falta trocar `foto` (nome exato do arquivo) e `alt` de cada um. **Apague a linha `confirmar`** de cada profissional depois de preencher. O build para com uma mensagem se o arquivo da `foto` não existir.
+
+## 3. Galeria do Estúdio Flávio Barcelos (hoje 15 fotos)
 
 1. Coloque as fotos (de preferência **verticais, 4:5**), cerca de 1200 × 1500 px, em `src/assets/galeria/`. Dê nomes que descrevem a foto, sem espaços nem acentos, por exemplo `loiro-platinado-raiz-esfumada.jpg`.
 2. Se sobrar algum arquivo `placeholder-NN.webp`, apague.
@@ -43,7 +63,6 @@ A foto do banner (topo do site) **não** entra aqui: continua como espaço reser
 | `autorizado` | `true` se há autorização de imagem. Com `false`, a foto **não aparece**                                                                  |
 | `confirmar`  | **apague esta linha** quando a foto for real                                                                                             |
 
-4. O aviso "Imagens publicadas com autorização das clientes." já aparece sob a galeria.
 
 ## 4. Reels (8 vídeos)
 

@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'astro/types';
 
 interface BaseProps {
-  /** primario-escuro: fundo onyx (sobre seções claras). primario-claro: fundo pearl e secundario-claro: contorno (ambos sobre seções escuras). */
+  /** primario: dourado com gradiente e texto preto. secundario: contorno dourado com gradiente; o botão inteiro fica dourado ao passar o mouse. Os demais nomes são apelidos. */
   variante?:
     'primario' | 'secundario' | 'primario-escuro' | 'primario-claro' | 'secundario-claro' | 'link';
   class?: string;
@@ -17,20 +17,22 @@ type ButtonProps = BaseProps &
 
 type Props = LinkProps | ButtonProps;
 
-const { variante = 'primario-escuro', class: className, href, ...rest } = Astro.props;
+const { variante = 'primario', class: className, href, ...rest } = Astro.props;
 const { type = 'button', ...botao } = rest as HTMLAttributes<'button'>;
 
 const base =
   'inline-flex items-center justify-center gap-2 font-sans font-medium transition-colors duration-200 cursor-pointer';
 
+// Primário: dourado com gradiente (cores do logo) e texto preto. Secundário: contorno dourado com gradiente e texto na cor da seção.
+const primario = 'btn-ouro rounded-full px-8 py-3.5 text-onyx';
+const secundario =
+  'anel-ouro btn-ouro-hover relative [--anel:1.5px] rounded-full bg-transparent px-8 py-3.5 text-fg hover:text-onyx';
 const variantes = {
-  // Sobre fundos claros e silk: marrom (velvet) com texto silk.
-  primario: 'rounded-full bg-velvet px-8 py-3.5 text-silk hover:bg-onyx',
-  secundario:
-    'rounded-full border-[1.5px] border-velvet bg-transparent px-8 py-3.5 text-velvet hover:bg-velvet hover:text-silk',
-  'primario-escuro': 'rounded-full bg-velvet px-8 py-3.5 text-pearl hover:bg-onyx',
-  'primario-claro': 'rounded-full bg-pearl px-8 py-3.5 text-onyx hover:bg-marble',
-  'secundario-claro': 'rounded-full border border-marble/60 px-8 py-3.5 text-pearl hover:bg-velvet',
+  primario,
+  secundario,
+  'primario-escuro': primario,
+  'primario-claro': primario,
+  'secundario-claro': secundario,
   link: 'px-0 py-1 underline decoration-1 underline-offset-[0.35em] hover:decoration-2',
 } as const;
 

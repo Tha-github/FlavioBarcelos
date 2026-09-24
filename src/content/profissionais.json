@@ -1,0 +1,44 @@
+[
+  {
+    "id": "flavio-barcelos",
+    "nome": "Flávio Barcelos",
+    "area": "Especialista em loiros, cortes, tratamentos e alisamentos.",
+    "instagram": "https://www.instagram.com/studioflaviobarcelos/",
+    "foto": "flavio.jpeg",
+    "alt": "Flávio Barcelos, cabeleireiro, sorrindo, de avental preto."
+  },
+  {
+    "id": "dayana-fitzner",
+    "nome": "Dayana Fitzner",
+    "area": "Especialista em maquiagem e penteados.",
+    "instagram": "https://www.instagram.com/dayanafitznerbeauty/",
+    "foto": "dayana.jpeg",
+    "alt": "Dayana Fitzner, maquiadora, segurando dois pincéis de maquiagem diante do rosto."
+  },
+  {
+    "id": "vitor-coronato",
+    "nome": "Vitor Coronato",
+    "area": "Especialista em alongamento de unhas.",
+    "instagram": "https://www.instagram.com/vitorcoronatonails/",
+    "foto": "vitor.jpeg",
+    "alt": "Vitor Coronato, de camisa preta, em retrato sobre fundo azul."
+  },
+  {
+    "id": "soraya-pimentel",
+    "nome": "Soraya Pimentel",
+    "area": "Especialista em depilação e design de sobrancelhas.",
+    "instagram": "https://www.instagram.com/sorayapimenteldesigner/",
+    "foto": "soraya.jpeg",
+    "alt": "Soraya Pimentel sorrindo, de jaleco branco de renda, em sala de atendimento.",
+    "posicao": "top"
+  },
+  {
+    "id": "thai-azevedo",
+    "nome": "Thai Azevedo",
+    "area": "Especialista em cabelos crespos, cacheados e ondulados.",
+    "instagram": "https://www.instagram.com/_thaiiazevedo/",
+    "foto": "thai.jpeg",
+    "alt": "Thai Azevedo, de cabelo cacheado, sorrindo, com um vestido verde.",
+    "posicao": "top"
+  }
+]

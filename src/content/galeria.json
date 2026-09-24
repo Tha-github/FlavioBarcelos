@@ -1,92 +1,152 @@
 [
   {
-    "arquivo": "mechas-loiras-ondas-longas.jpg",
-    "alt": "Mulher sorrindo com cabelo longo ondulado e mechas loiras douradas",
+    "arquivo": "01.png.jpeg",
+    "alt": "Duas mulheres com cabelo longo ondulado e mechas loiras douradas, fazendo selfie no espelho do salão",
     "servico": "Mechas",
     "autorizado": true
   },
   {
-    "arquivo": "unhas-alongadas-rosa-translucido.jpg",
-    "alt": "Mão com unhas alongadas quadradas em rosa translúcido",
-    "servico": "Manicure",
-    "autorizado": true
-  },
-  {
-    "arquivo": "mechas-mel-cabelo-longo-castanho.jpg",
-    "alt": "Cabelo longo castanho escuro com mechas em tom de mel nas pontas",
+    "arquivo": "02.png.jpeg",
+    "alt": "Mulher de frente com cabelo longo castanho escuro e mechas douradas, sentada na cadeira do salão",
     "servico": "Mechas",
     "autorizado": true
   },
   {
-    "arquivo": "mechas-caramelo-cabelo-em-camadas.jpg",
-    "alt": "Cabelo longo em camadas com franja lateral e mechas em tom caramelo",
-    "servico": "Mechas",
-    "autorizado": true
-  },
-  {
-    "arquivo": "unhas-degrade-branco-dourado-brilho.jpg",
-    "alt": "Unhas com degradê do branco ao dourado com brilho",
-    "servico": "Manicure",
-    "autorizado": true
-  },
-  {
-    "arquivo": "franja-cabelo-liso-pontas-caramelo.jpg",
-    "alt": "Cabelo longo liso com franja e pontas em tom caramelo, visto de frente",
+    "arquivo": "03.png.jpeg",
+    "alt": "Mulher com cabelo longo liso, franja e pontas em tom caramelo, sentada na cadeira do salão",
     "servico": "Corte",
     "autorizado": true
   },
   {
-    "arquivo": "loiro-esfumado-cabelo-longo-liso.jpg",
-    "alt": "Mulher com cabelo longo liso, raiz castanha esfumada em tons de loiro claro",
+    "arquivo": "04.png.jpeg",
+    "alt": "Mulher com cabelo longo liso, raiz escura e pontas em tom de loiro dourado",
     "servico": "Loiras",
     "autorizado": true
   },
   {
-    "arquivo": "unhas-stiletto-francesinha-preta-cristais.jpg",
-    "alt": "Unhas em formato stiletto, base rosada com francesinha preta e cristais",
-    "servico": "Manicure",
-    "autorizado": true
-  },
-  {
-    "arquivo": "cabelo-medio-mechas-iluminadas-frente.jpg",
-    "alt": "Cabelo na altura dos ombros, castanho escuro com mechas iluminadas na frente do rosto",
+    "arquivo": "05.png.jpeg",
+    "alt": "Mulher sorrindo com cabelo longo ondulado e mechas loiras douradas diante de prateleiras de produtos",
     "servico": "Mechas",
     "autorizado": true
   },
   {
-    "arquivo": "ombre-dourado-ondulado-costas.jpg",
-    "alt": "Costas de cabelo longo ondulado, castanho com pontas em tom dourado",
-    "servico": "Mechas",
+    "arquivo": "11.png.jpeg",
+    "alt": "Mulher de perfil sorrindo, com penteado preso, maquiagem iluminada e vestido vermelho",
+    "servico": "Maquiagem",
     "autorizado": true
   },
   {
-    "arquivo": "corte-curto-mechas-platinadas.jpg",
-    "alt": "Mulher com corte curto repicado e mechas platinadas",
-    "servico": "Corte",
+    "arquivo": "12.png.jpeg",
+    "alt": "Mulher de costas com cabelo loiro em ondas longas e trança lateral em meio penteado",
+    "servico": "Penteado",
     "autorizado": true
   },
   {
-    "arquivo": "duas-clientes-cabelos-loiros-mechados.jpg",
-    "alt": "Duas clientes em frente ao espelho com cabelos longos e mechas loiras",
+    "arquivo": "13.png.jpeg",
+    "alt": "Mulher com cabelo preto ondulado e maquiagem com sombra rosada e azul e brilho no olhar",
+    "servico": "Maquiagem",
+    "autorizado": true
+  },
+  {
+    "arquivo": "14.png.jpeg",
+    "alt": "Mulher de perfil com cabelo loiro em camadas com franja lateral e sobrancelhas marcadas",
     "servico": "Loiras",
     "autorizado": true
   },
   {
-    "arquivo": "finalizacao-cabelo-longo-mechas-douradas.jpg",
-    "alt": "Cliente com cabelo longo e mechas douradas durante a finalização no salão",
-    "servico": "Mechas",
+    "arquivo": "15.png.jpeg",
+    "alt": "Detalhe de olho com delineado gráfico, sombra dourada e aplicações de folha de ouro",
+    "servico": "Maquiagem",
     "autorizado": true
   },
   {
-    "arquivo": "cliente-cabelo-castanho-mechas-douradas-no-salao.jpg",
-    "alt": "Cliente sentada na cadeira do salão com cabelo longo castanho e mechas douradas",
-    "servico": "Mechas",
+    "arquivo": "06.png.jpeg",
+    "alt": "Mão com unhas alongadas em francesinha branca e detalhes de estampa de onça",
+    "servico": "Unhas",
     "autorizado": true
   },
   {
-    "arquivo": "cabeleireiro-mostrando-mechas-cabelo-longo.jpg",
-    "alt": "Cabeleireiro levantando o cabelo longo de uma cliente para mostrar as mechas em tons de caramelo",
-    "servico": "Mechas",
+    "arquivo": "07.png.jpeg",
+    "alt": "Mão com unhas amendoadas em francesinha branca clássica sobre base rosada",
+    "servico": "Unhas",
+    "autorizado": true
+  },
+  {
+    "arquivo": "08.png.jpeg",
+    "alt": "Mão com unhas curtas ovais em base rosada com brilho prateado",
+    "servico": "Unhas",
+    "autorizado": true
+  },
+  {
+    "arquivo": "09.png.jpeg",
+    "alt": "Mão com unhas quadradas alongadas em esmalte rosa translúcido",
+    "servico": "Unhas",
+    "autorizado": true
+  },
+  {
+    "arquivo": "10.png.jpeg",
+    "alt": "Mão com unhas quadradas curtas em francesinha branca fina",
+    "servico": "Unhas",
+    "autorizado": true
+  },
+  {
+    "arquivo": "16.png.jpeg",
+    "alt": "Sobrancelhas escuras e definidas, em foto de perto do rosto com os olhos fechados",
+    "servico": "Sobrancelhas",
+    "autorizado": true
+  },
+  {
+    "arquivo": "17.png.jpeg",
+    "alt": "Sobrancelhas volumosas com design e acabamento marcado, em foto de perto com os olhos fechados",
+    "servico": "Sobrancelhas",
+    "autorizado": true
+  },
+  {
+    "arquivo": "18.png.jpeg",
+    "alt": "Antes e depois de design de sobrancelhas, com o rosto de frente e de perfil, olhos fechados",
+    "servico": "Sobrancelhas",
+    "autorizado": true
+  },
+  {
+    "arquivo": "19.png.jpeg",
+    "alt": "Sobrancelhas grossas e alinhadas em rosto de frente com os olhos fechados",
+    "servico": "Sobrancelhas",
+    "autorizado": true
+  },
+  {
+    "arquivo": "20.png.jpeg",
+    "alt": "Sobrancelhas escuras com design arqueado e bem preenchido em rosto de frente",
+    "servico": "Sobrancelhas",
+    "autorizado": true
+  },
+  {
+    "arquivo": "21.png.jpeg",
+    "alt": "Mulher de frente com cabelo cacheado volumoso, franja e mechas em tom caramelo",
+    "servico": "Cachos",
+    "autorizado": true
+  },
+  {
+    "arquivo": "22.png.jpeg",
+    "alt": "Mulher de costas com cabelo cacheado na altura dos ombros, raiz escura e pontas em tom caramelo",
+    "servico": "Cachos",
+    "autorizado": true
+  },
+  {
+    "arquivo": "23.png.jpeg",
+    "alt": "Mulher de perfil sorrindo, com cabelo crespo curto e volumoso e brinco dourado com pedra preta",
+    "servico": "Cachos",
+    "autorizado": true
+  },
+  {
+    "arquivo": "24.png.jpeg",
+    "alt": "Mulher de costas com cabelo escuro com cachos definidos, longo e molhado, sobre toalha branca",
+    "servico": "Cachos",
+    "autorizado": true
+  },
+  {
+    "arquivo": "25.png.jpeg",
+    "alt": "Cabelo castanho escuro em cachos largos e volumosos, visto de costas, com a mão do cabeleireiro sobre a cabeça",
+    "servico": "Cachos",
     "autorizado": true
   }
 ]

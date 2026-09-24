@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+import flavio from '../assets/hero/flavio.png';
 import Section from './Section.astro';
 import Heading from './Heading.astro';
 import Button from './Button.astro';
@@ -8,29 +10,41 @@ import { externo, linhaApoio } from '../lib/contato';
 import { whatsappLink } from '../lib/whatsapp';
 ---
 
-<!-- Hero em silk. Padding superior = altura do header fixo (64px mobile, 80px desktop) + ~32-40px. -->
+<!-- Hero em preto. Padding superior = altura do header fixo (64px mobile, 80px desktop) + ~32-40px. -->
 <Section
-  tema="silk"
+  tema="preto"
   class="relative z-20 overflow-x-clip pt-[6rem]! pb-24! xl:pt-[7rem]! lg:pb-16!"
 >
   <div class="max-w-site px-gutter relative mx-auto grid w-full gap-10 lg:grid-cols-12 lg:items-start lg:gap-8">
-    <!-- LCP: placeholder 4:5. [CONFIRMAR — cliente vai escolher] Trocar por <Picture loading="eager" fetchpriority="high"> com a foto real. -->
-    <div class="mx-auto w-4/5 sm:w-3/5 lg:order-2 lg:col-span-5 lg:col-start-8 lg:w-full">
+    <!-- LCP: foto do Flávio (PNG com fundo transparente). O degradê preto no pé some com o corte da imagem. -->
+    <div class="relative mx-auto w-4/5 sm:w-3/5 lg:order-2 lg:col-span-5 lg:col-start-8 lg:w-full">
+      <Picture
+        src={flavio}
+        formats={['avif', 'webp']}
+        widths={[400, 600, 800, 1000]}
+        sizes="(min-width: 1024px) 466px, (min-width: 640px) 60vw, 80vw"
+        alt={site.heroAlt}
+        width={flavio.width}
+        height={flavio.height}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="h-auto w-full"
+      />
       <div
-        class="bg-velvet text-marble border-champagne/40 text-step--1 flex aspect-[4/5] w-full items-end border p-4 text-left"
-        role="img"
-        aria-label="Espaço reservado para a foto do Flávio Barcelos"
-      >
-        Foto vertical 4:5 [CONFIRMAR]
-      </div>
+        class="pointer-events-none absolute inset-x-0 -bottom-px h-[22%] bg-gradient-to-t from-onyx via-onyx/70 to-transparent"
+        aria-hidden="true"
+      ></div>
     </div>
 
     <div class="lg:order-1 lg:col-span-7 lg:text-left">
       <Heading nivel={1} tamanho="display">
-        Cabelos com cuidado no Centro do Rio
+        Seu espaço de beleza no Centro do <em class="texto-ouro">Rio de Janeiro</em>
       </Heading>
-      <p class="text-step-1 text-onyx mx-auto mt-6 max-w-[34ch] lg:mx-0">
-        Especialista em loiras, corte, coloração e tratamento, com o cuidado do Flávio Barcelos.
+      <p class="text-step-0 text-pearl mx-auto mt-6 max-w-[50ch] lg:mx-0">
+        Beleza e cuidado em um só lugar. Conte com uma equipe de profissionais especializados em
+        maquiagem, unhas, depilação, sobrancelhas e barbearia, além dos serviços de cabelo com
+        Flávio Barcelos, especialista em loiras, cortes, tratamentos e alisamentos.
       </p>
       <div class="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
         <Button
@@ -45,7 +59,7 @@ import { whatsappLink } from '../lib/whatsapp';
           Ver serviços
         </Button>
       </div>
-      <p class="text-step--1 text-onyx mx-auto mt-8 w-fit lg:mx-0">{linhaApoio()}</p>
+      <p class="text-step--1 text-pearl mx-auto mt-8 w-fit lg:mx-0">{linhaApoio()}</p>
     </div>
   </div>
 

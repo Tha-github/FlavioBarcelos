@@ -24,7 +24,7 @@ const semColeta: SecaoLegal = {
     'Este site não possui formulário, cadastro, área de login nem outro campo em que você informe nome, telefone, e-mail ou mensagem. Não pedimos documentos pessoais, endereço residencial, dados de pagamento nem informações de saúde, e nada do que você faz no site é gravado em um banco de dados do estúdio.',
     'O agendamento e o contato acontecem fora do site, pelo WhatsApp (Meta), sob a política de privacidade desse serviço. Ao clicar nos links de WhatsApp, você sai deste site e os dados que informar passam a ser tratados por esse serviço.',
     'A infraestrutura de hospedagem pode processar dados técnicos de conexão (como endereço IP e informações do navegador) para entregar as páginas e proteger o serviço. Recursos opcionais de análise, marketing e conteúdo de terceiros dependem do seu consentimento, descrito na Política de Cookies.',
-    'Fotos e depoimentos de clientes exibidos na galeria e nos reels são publicados mediante autorização de uso de imagem, concedida por escrito e revogável. Sem essa autorização, nada é publicado. [CONFIRMAR — revisão jurídica] Modelo do termo de autorização, prazo e forma de retirada da imagem.',
+    'Fotos e depoimentos de clientes exibidos na galeria e nos reels são publicados mediante autorização de uso de imagem, concedida por escrito e revogável. Sem essa autorização, nada é publicado.',
   ],
 };
 const compartilhamento: SecaoLegal = {
@@ -37,7 +37,7 @@ const compartilhamento: SecaoLegal = {
 const bases: SecaoLegal = {
   titulo: 'Finalidades e bases legais',
   paragrafos: [
-    'Como o site não coleta dados diretamente, o tratamento próprio se limita ao necessário para entregar as páginas e lembrar suas escolhas de privacidade neste navegador. Recursos opcionais de análise, marketing e conteúdo de terceiros dependem de consentimento específico, revogável e separado (art. 7º, I, da LGPD). [CONFIRMAR — revisão jurídica] Validar cada operação e base legal antes da publicação definitiva.',
+    'Como o site não coleta dados diretamente, o tratamento próprio se limita ao necessário para entregar as páginas e lembrar suas escolhas de privacidade neste navegador. Recursos opcionais de análise, marketing e conteúdo de terceiros dependem de consentimento específico, revogável e separado (art. 7º, I, da LGPD).',
   ],
 };
 const retencao: SecaoLegal = {
@@ -91,7 +91,7 @@ export const paginasLegais: { slug: string; titulo: string; secoes: SecaoLegal[]
         titulo: 'Escolhas e atualização deste documento',
         paragrafos: [
           'O painel Preferências de cookies permite recusar ou revogar categorias opcionais a qualquer momento. A mudança interrompe novos carregamentos e remove o mapa ativo; não apaga informações já recebidas por provedores. Para essas informações, use o canal de privacidade e os mecanismos dos respectivos serviços.',
-          'Alterações relevantes serão publicadas nesta página, com nova versão e data. Mudanças na política de cookies exigem nova escolha. Este texto-base depende da confirmação dos campos indicados e da revisão jurídica do funcionamento real do estúdio.',
+          'Alterações relevantes serão publicadas nesta página, com nova versão e data. Mudanças na política de cookies exigem nova escolha.',
         ],
       },
     ],
@@ -122,7 +122,7 @@ export const paginasLegais: { slug: string; titulo: string; secoes: SecaoLegal[]
         paragrafos: [
           'Textos, imagens e identidade visual devem ser utilizados respeitando os direitos de seus titulares. Não é permitido explorar falhas, tentar acessar dados alheios ou interromper o serviço. Falhas podem ser comunicadas pelo canal de segurança publicado no site, quando confirmado.',
           'O site pode ficar indisponível para manutenção ou por falhas de infraestrutura. Serviços externos são prestados por seus respectivos responsáveis. Essas condições não afastam deveres legais do estúdio nem limitam direitos do consumidor. Não há garantia de resultado estético individual apenas pela consulta ao site.',
-          'Atualizações serão identificadas pela versão e data desta página. [CONFIRMAR — revisão jurídica] Ajustar estas condições à operação real antes da publicação definitiva.',
+          'Atualizações serão identificadas pela versão e data desta página.',
         ],
       },
     ],

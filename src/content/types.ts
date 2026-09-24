@@ -51,10 +51,12 @@ export interface Site {
   /** Dados do MEI. Não inclui razão social nem CPF. */
   empresa: { nomeCivil: string; tipo: string; cnpj: string };
   privacidade: { responsavel: string };
+  /** Texto alternativo da foto do hero (src/assets/hero/flavio.png). */
+  heroAlt: string;
   /** Vazio = analíticos desativado. */
   ga4MeasurementId: string;
   sobre: { nome: string; bio: string; fatos: string[]; citacao: string; retratoAlt: string };
-  /** Texto alternativo das 3 imagens de "Cabelo é o nosso foco". */
+  /** Texto alternativo das 2 imagens de "Cabelos by Flávio Barcelos". */
   focoAlts: readonly string[];
   /** Preencher somente com dados verificados e autorização de exibição. */
   avaliacoesGoogle?: { notaMedia: number; total: number; atualizadoEm: string };
@@ -72,8 +74,8 @@ export interface Servico {
   nome: string;
   /** 1 a 2 linhas, focadas no resultado. */
   descricao: string;
-  /** Categoria: serviço capilar ou demais serviços do espaço. */
-  categoria: 'cabelo' | 'espaco';
+  /** Categoria: cabelo (só nos dados estruturados), outros (seção Outros Serviços) ou espaco (só nos dados estruturados). */
+  categoria: 'cabelo' | 'espaco' | 'outros';
 }
 
 /** Foto da galeria. O arquivo fica em src/assets/galeria/ e só é exibido com autorizado: true. */
@@ -121,5 +123,21 @@ export interface FaqItem {
   id: string;
   pergunta: string;
   resposta: string;
-  respostaDe?: 'pagamento' | 'whatsapp';
+}
+
+/** Profissional do estúdio. A foto (4:5) fica em src/assets/profissionais/. */
+export interface Profissional {
+  id: string;
+  nome: string;
+  /** Área de atuação, exibida abaixo do nome. */
+  area: string;
+  /** Nome do arquivo em src/assets/profissionais/. */
+  foto: string;
+  alt: string;
+  /** object-position do recorte 4:5 da foto (ex.: "top"). Padrão: centro. */
+  posicao?: string;
+  /** URL do Instagram do profissional (https://www.instagram.com/...). Sem ela, o botão "Saber mais" não aparece. */
+  instagram?: string;
+  /** true enquanto for placeholder ou dado a confirmar. */
+  confirmar?: boolean;
 }

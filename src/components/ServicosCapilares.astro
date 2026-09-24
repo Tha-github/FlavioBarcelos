@@ -6,21 +6,21 @@ import Heading from './Heading.astro';
 import BoxServico from './BoxServico.astro';
 import CTAAgendar from './CTAAgendar.astro';
 
-const lista = servicos.filter((s) => s.categoria === 'cabelo');
+const lista = servicos.filter((s) => s.categoria === 'outros');
 ---
 
-<Section fundo="marble" aria-labelledby="servicos">
+<Section tema="preto" aria-labelledby="servicos">
   <Container>
     <Heading nivel={2} id="servicos">
-      Serviços capilares
+      Outros Serviços
     </Heading>
     <p class="mt-6">
-      Cortes modernos, coloração vibrante, mechas e técnicas avançadas de aplicação de cor, no
-      coração do Rio desde 2020.
+      Um espaço pensado para valorizar sua beleza e proporcionar uma experiência completa de cuidado
+      e bem-estar, no coração do Rio desde 2020.
     </p>
     <div class="mt-12 flex flex-wrap justify-center gap-6">
       {lista.map((s) => (
-        <BoxServico nome={s.nome} descricao={s.descricao} fundo="pearl" />
+        <BoxServico nome={s.nome} descricao={s.descricao} tema="preto" />
       ))}
     </div>
     <CTAAgendar secao="servicos-capilares" />

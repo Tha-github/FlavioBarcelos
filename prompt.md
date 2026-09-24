@@ -1,4 +1,4 @@
-# prompt.md — Landing page de alto padrão · Studio Flávio Barcelos
+# prompt.md — Landing page de alto padrão · Estúdio Flávio Barcelos
 
 Este documento descreve o projeto completo. As tarefas (T1 a T8) serão enviadas uma de cada vez. Antes de executar qualquer tarefa, leia este arquivo inteiro e siga o que está aqui como fonte da verdade.
 
@@ -10,7 +10,7 @@ Este documento descreve o projeto completo. As tarefas (T1 a T8) serão enviadas
 
 | Campo | Valor |
 |---|---|
-| Nome | Studio Flávio Barcelos |
+| Nome | Estúdio Flávio Barcelos |
 | Categoria | Salão de beleza, com foco principal em **cabelos** (especialista em loiras) |
 | Aberto desde | 2020 |
 | Endereço | Rua México, 119, Sala 201 — Centro, Rio de Janeiro/RJ — CEP 20031-907 |
@@ -33,8 +33,9 @@ Enquanto não forem fornecidos, use o marcador `[CONFIRMAR]` no código e no con
 - 3 a 6 depoimentos reais do Google, com autorização
 - Mini-bio do Flávio Barcelos (experiência, formação, especialidades)
 - Respostas do FAQ marcadas [CONFIRMAR] (ordem de chegada, orçamento de coloração e mechas, cancelamento e atraso, estacionamento)
-- Foto do hero (o cliente vai escolher) e retrato do Flávio (`src/assets/sobre/retrato.*`)
-- 3 imagens 4:5 de "Cabelo é o nosso foco" (`src/assets/foco/foco-1.*`, `foco-2.*` e `foco-3.*`) e seus textos alternativos
+- Fotos 4:5 dos 5 profissionais do estúdio (`src/assets/profissionais/`) e seus textos alternativos em `src/content/profissionais.json` (nomes e áreas já preenchidos)
+- Retrato do Flávio para a seção Sobre (`src/assets/sobre/retrato.*`); a foto do hero (`src/assets/hero/flavio.png`) já foi entregue
+- 2 imagens 4:5 de antes e depois em "Cabelos by Flávio Barcelos" (`src/assets/foco/foco-1.*` e `foco-2.*`) e seus textos alternativos
 - Logotipo em SVG
 - Confirmar a autorização de uso de imagem das 15 fotos da galeria e revisar os textos alternativos (`src/content/galeria.json`)
 - 8 vídeos (reels) com poster, título, descrição e legendas, se houver fala (`src/content/reels.json`)
@@ -54,11 +55,11 @@ Google Analytics (ID) fica por conta do cliente, no final; a estrutura de consen
 
 1. Header fixo
 2. Hero (banner, com pincéis flutuantes)
-3. Cabelo é o nosso foco (`#cabelos`, com 3 imagens)
-4. Serviços capilares (`#servicos`, em boxes)
-5. Como funciona o atendimento (`#como-funciona`, em carrossel)
+3. Cabelos by Flávio Barcelos (`#cabelos`, com 2 imagens: antes à esquerda e depois à direita)
+4. Outros Serviços (`#servicos`, em boxes)
+5. Profissionais do Estúdio Flávio Barcelos (`#profissionais`, 5 fotos lado a lado com nome e área; substitui "Como funciona o atendimento")
 6. Cabelos feitos no studio (`#galeria`)
-7. O studio em movimento (`#reels`, um vídeo por vez)
+7. Highlights (`#reels`, um vídeo por vez)
 8. Sobre o Flávio (`#sobre`)
 9. Além dos cabelos (`#outros-servicos`, em boxes)
 10. Perguntas frequentes (`#faq`)
@@ -96,16 +97,16 @@ Dois pincéis de coloração renderizados em 3D flutuam no hero e atravessam a b
 
 ### 2.3 Tokens
 
-**Cores** (paleta "Luxe & Elegant", ajuste A4; valores aproximados lidos da imagem enviada pelo cliente)
+**Cores** (ajuste A5: preto, branco, ouro e areia; substitui a paleta "Luxe & Elegant" do A4)
 
 | Token | Hex | Uso |
 |---|---|---|
-| --onyx | #000000 | Texto principal e superfícies muito escuras (sobreposições, controles de vídeo) |
-| --velvet | #212F52 | Marinho: botões, títulos, links, foco e fundo do CTA final |
-| --marble | #E9E6E1 | Fundo de seções claras alternadas |
-| --pearl | #FFFFFF | Fundo principal claro |
-| --champagne | #D2B589 | Acento decorativo: bordas finas, detalhes e ícones. Nunca em texto |
-| --silk | #EEE6DB | Fundo do hero, do header e do rodapé (textos em --onyx e --velvet) |
+| --onyx | #000000 | Fundo das seções pretas (header, hero, Outros Serviços, Cabelos feitos no studio, Flávio Barcelos, Perguntas frequentes e CTA final) e texto sobre areia |
+| --pearl | #FFFFFF | Texto sobre preto, botões primários (texto preto) e fundo dos boxes em seções areia |
+| --stone | #D8D4C9 | Fundo das demais seções, do rodapé e do corpo da página (texto preto) |
+| --champagne | #D2B589 | Acento decorativo (bordas finas e detalhes), nunca em texto. Botões: gradiente dourado do logo (`--gradiente-ouro`) com texto preto |
+
+Cada seção define `--fg` (cor do texto) e `--on-fg`: branco/preto nas seções pretas, preto/branco nas seções areia. Links, contornos e ícones usam `--fg`. O logo (`src/assets/logo.png`, dourado com fundo transparente) substitui o nome e o elemento gráfico no header.
 
 Todas as combinações de texto devem passar em WCAG AA.
 
@@ -147,7 +148,7 @@ Estrutura:
 ├─ src/
 │  ├─ assets/
 │  ├─ components/     Header, Hero, PinceisFlutuantes, FocoCabelos,
-│  │                  ServicosCapilares, BoxServico, ComoFunciona, Galeria,
+│  │                  ServicosCapilares, BoxServico, Profissionais, Galeria,
 │  │                  Lightbox, ReelsPlayer, Reels, Sobre, OutrosServicos,
 │  │                  Depoimentos, FAQ, Localizacao, CTAAgendar, CTAFinal,
 │  │                  Footer, CookieConsent, WhatsAppButton
@@ -179,6 +180,7 @@ Estrutura:
 | A2 | Layout, cores e reorganização das seções: [`docs/ajustes/A2.md`](docs/ajustes/A2.md) | Concluído |
 | A3 | Dados reais do estúdio, WhatsApp como agendamento e serviços: [`docs/ajustes/A3.md`](docs/ajustes/A3.md) | Concluído |
 | A4 | Nova paleta de cores "Luxe & Elegant" (enviada como imagem): [`docs/ajustes/A4.md`](docs/ajustes/A4.md) | Concluído |
+| A5 | Ajuste geral de cores e logo: preto, branco e areia (#D8D4C9): [`docs/ajustes/A5.md`](docs/ajustes/A5.md) | Concluído |
 | T8 | Desempenho, acessibilidade, testes e publicação | **Próxima** |
 
 ---

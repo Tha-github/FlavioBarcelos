@@ -1,5 +1,4 @@
 ---
-import { depoimentos } from '../content';
 import { externo, rotasUrls } from '../lib/contato';
 import Section from './Section.astro';
 import Container from './Container.astro';
@@ -10,11 +9,9 @@ import Horarios from './Horarios.astro';
 import Mapa from './Mapa.astro';
 
 const rotas = rotasUrls();
-// Fundo oposto ao do FAQ, que alterna conforme haja depoimentos visíveis.
-const comDepoimentos = depoimentos.some((d) => d.autorizado === true);
 ---
 
-<Section fundo={comDepoimentos ? 'marble' : 'pearl'} aria-labelledby="como-chegar" class="esq-lg">
+<Section tema="stone" aria-labelledby="como-chegar" class="esq-lg">
   <Container>
     <Heading nivel={2} id="como-chegar">
       Como chegar

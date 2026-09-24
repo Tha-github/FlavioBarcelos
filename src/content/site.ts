@@ -1,7 +1,7 @@
 import type { Site } from './types';
 
 export const site: Site = {
-  nome: 'Studio Flávio Barcelos',
+  nome: 'Estúdio Flávio Barcelos',
   categoria: 'Salão de beleza, com foco principal em cabelos',
   descricao:
     'Salão no Centro do Rio de Janeiro desde 2020, especializado em loiras, cortes, coloração, mechas, tratamentos e alisamentos. Também oferece manicure, pedicure, depilação e massagem relaxante.',
@@ -45,16 +45,19 @@ export const site: Site = {
   whatsapp: '5521969261188',
   telefone: '(21) 96926-1188',
   mensagens: {
-    agendar: 'Olá! Gostaria de agendar um horário no Studio Flávio Barcelos.',
-    informacoes: 'Olá! Gostaria de mais informações sobre o Studio Flávio Barcelos.',
+    agendar: 'Olá! Gostaria de agendar um horário no Estúdio Flávio Barcelos.',
+    informacoes: 'Olá! Gostaria de mais informações sobre o Estúdio Flávio Barcelos.',
     // {servico} é trocado pelo nome do serviço.
-    servico: 'Olá! Gostaria de agendar {servico} no Studio Flávio Barcelos.',
+    servico: 'Olá! Gostaria de agendar {servico} no Estúdio Flávio Barcelos.',
   },
 
   // MEI. A razão social completa contém números do CPF e não é publicada; o CPF nunca aparece no site.
   empresa: { nomeCivil: 'Flavio Barcelos da Silva', tipo: 'MEI', cnpj: '44.024.538/0001-01' },
   // Responsável pelo canal de privacidade (contato apenas pelo WhatsApp).
   privacidade: { responsavel: 'Flavio Barcelos' },
+
+  heroAlt:
+    'Flávio Barcelos sorrindo, de camisa preta e avental de couro marrom, com as mãos na cintura',
 
   // Vazio = analíticos desativado. O cliente configura o ID (G-XXXXXXXXXX) ao ativar o GA4.
   ga4MeasurementId: '',
@@ -72,11 +75,10 @@ export const site: Site = {
     retratoAlt: '[CONFIRMAR] Descrever o retrato de Flávio Barcelos.',
   },
 
-  // Texto alternativo das 3 imagens de "Cabelo é o nosso foco" (src/assets/foco/foco-1.* a foco-3.*).
+  // Texto alternativo das 2 imagens de "Cabelos by Flávio Barcelos": antes (foco-1.*) e depois (foco-2.*).
   focoAlts: [
-    '[CONFIRMAR] Descrever a imagem 1 de Cabelo é o nosso foco.',
-    '[CONFIRMAR] Descrever a imagem 2 de Cabelo é o nosso foco.',
-    '[CONFIRMAR] Descrever a imagem 3 de Cabelo é o nosso foco.',
+    'Antes: cabelo longo castanho escuro, visto de costas, ondulado e com frizz',
+    'Depois: cabelo longo e ondulado, visto de costas, com mechas loiras douradas e brilho',
   ],
 
   // [CONFIRMAR] Nota média, total e data de atualização, com autorização.

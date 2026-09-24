@@ -2,38 +2,31 @@
   {
     "id": "como-agendar",
     "pergunta": "Como faço para agendar?",
-    "resposta": "Pelo WhatsApp {telefone}. É só tocar em Agendar horário, em qualquer parte do site.",
-    "respostaDe": "whatsapp"
+    "resposta": "Os agendamentos são realizados pelo WhatsApp. Entre em contato com nossa equipe, escolha o serviço desejado e consulte os horários disponíveis."
   },
   {
     "id": "agendamento",
     "pergunta": "Preciso agendar ou vocês atendem por ordem de chegada?",
-    "resposta": "[CONFIRMAR] Como funciona o atendimento com e sem agendamento."
+    "resposta": "Recomendamos o agendamento antecipado para garantir disponibilidade com o profissional desejado."
   },
   {
     "id": "criancas",
     "pergunta": "Vocês atendem crianças?",
-    "resposta": "Sim, atendemos adultos e crianças."
+    "resposta": "Consulte nossa equipe pelo WhatsApp para verificar o atendimento de acordo com a idade e o serviço desejado."
   },
   {
     "id": "pagamento",
     "pergunta": "Quais formas de pagamento são aceitas?",
-    "resposta": "Aceitamos",
-    "respostaDe": "pagamento"
+    "resposta": "O Estúdio aceita pagamentos em dinheiro, cartão ou PIX."
   },
   {
     "id": "orcamento",
     "pergunta": "Como funciona o orçamento de coloração e mechas?",
-    "resposta": "[CONFIRMAR] Etapas da avaliação e definição do orçamento de coloração e mechas."
+    "resposta": "O valor pode variar de acordo com o comprimento, volume, condição atual do cabelo e resultado desejado. Entre em contato para receber uma avaliação mais precisa."
   },
   {
     "id": "cancelamento",
     "pergunta": "Qual a política de cancelamento e atraso?",
-    "resposta": "[CONFIRMAR] Prazos e condições para cancelamentos, remarcações e atrasos."
-  },
-  {
-    "id": "estacionamento",
-    "pergunta": "Tem estacionamento por perto?",
-    "resposta": "[CONFIRMAR] Opções de estacionamento próximas ao espaço."
+    "resposta": "Em caso de imprevistos, pedimos que avise nossa equipe com antecedência. Atrasos podem exigir a alteração do horário para não comprometer os atendimentos seguintes."
   }
 ]

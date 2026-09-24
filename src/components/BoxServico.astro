@@ -1,28 +1,28 @@
 ---
-// Box de serviço, reutilizado em "Serviços capilares" e "Além dos cabelos".
+// Box de serviço, usado em "Outros Serviços" (id servicos).
 import Heading from './Heading.astro';
 import { externo } from '../lib/contato';
 
 interface Props {
   nome: string;
   descricao: string;
-  /** Cor do box: contrasta com o fundo da seção. */
-  fundo?: 'pearl' | 'marble';
+  /** Tema da seção onde o box aparece (define o fundo do box). */
+  tema?: 'preto' | 'stone';
   /** Colunas no desktop (tablet: 2; mobile: 1). */
   colunas?: 3 | 4;
   /** Link opcional "Agendar" no rodapé do box (WhatsApp com o nome do serviço). */
   acao?: { href: string; rotulo?: string };
 }
 
-const { nome, descricao, fundo = 'marble', colunas = 3, acao } = Astro.props;
+const { nome, descricao, tema = 'stone', colunas = 3, acao } = Astro.props;
 const largura = colunas === 4 ? 'lg:w-[calc((100%-4.5rem)/4)]' : 'lg:w-[calc((100%-3rem)/3)]';
 ---
 
 <article
   class:list={[
-    'border-champagne flex w-full flex-col items-center border p-8 text-center md:w-[calc((100%-1.5rem)/2)]',
+    'borda-ouro flex w-full flex-col items-center border p-8 text-center md:w-[calc((100%-1.5rem)/2)]',
     largura,
-    fundo === 'pearl' ? 'bg-pearl' : 'bg-marble',
+    tema === 'preto' ? 'bg-pearl/5' : 'bg-pearl',
   ]}
 >
   <Heading nivel={3} tamanho="h4">
@@ -33,7 +33,7 @@ const largura = colunas === 4 ? 'lg:w-[calc((100%-4.5rem)/4)]' : 'lg:w-[calc((10
     <a
       href={acao.href}
       {...externo}
-      class="text-velvet mt-auto inline-flex min-h-11 items-center pt-4 font-medium underline underline-offset-4"
+      class="text-fg mt-auto inline-flex min-h-11 items-center pt-4 font-medium underline underline-offset-4"
       aria-label={`Agendar ${nome} pelo WhatsApp (abre em nova aba)`}
     >
       {acao.rotulo ?? 'Agendar'}

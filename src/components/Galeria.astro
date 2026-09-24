@@ -69,15 +69,14 @@ const fotos: FotoGaleriaOtimizada[] = await Promise.all(
 ---
 
 {fotos.length > 0 && (
-  <Section fundo="marble" aria-labelledby="galeria">
+  <Section tema="preto" aria-labelledby="galeria">
     <Container>
       <Heading nivel={2} id="galeria">
-        Cabelos feitos no studio
+        Galeria do Estúdio Flávio Barcelos
       </Heading>
       <div class="mt-12">
         <GaleriaFeed client:visible fotos={fotos} />
       </div>
-      <p class="text-step--1 mt-8">Imagens publicadas com autorização das clientes.</p>
       <CTAAgendar secao="galeria" class="mt-6">
         <Button href={site.links.instagram} {...externo} variante="secundario">
           Ver mais no Instagram<span class="sr-only"> (abre em nova aba)</span>

@@ -4,7 +4,7 @@ import Button from './Button.astro';
 ---
 
 <div data-mapa data-mapa-url={rotasUrls().embed}>
-  <div data-mapa-quadro class="aspect-[4/3] overflow-hidden bg-marble">
+  <div data-mapa-quadro class="aspect-[4/3] overflow-hidden bg-stone">
     <img
       src="/mapa-placeholder.svg"
       alt="Ilustração provisória de mapa, sem representação de ruas ou localização real"
@@ -14,7 +14,6 @@ import Button from './Button.astro';
       class="h-full w-full object-cover"
     />
   </div>
-  <p class="mt-3 text-step--1">Mapa ilustrativo [CONFIRMAR].</p>
   <p id="mapa-aviso" class="mt-3 text-step--1">
     O mapa do Google só pode ser carregado com a permissão para Conteúdo de terceiros.
   </p>

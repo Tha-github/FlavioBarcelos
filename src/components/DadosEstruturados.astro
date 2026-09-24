@@ -54,10 +54,15 @@ grafo.push({
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Serviços',
-    itemListElement: servicos.map((s) => ({
-      '@type': 'Offer',
-      itemOffered: { '@type': 'Service', name: s.nome, description: s.descricao },
-    })),
+    itemListElement: servicos
+      .filter(
+        (s, i, todos) =>
+          todos.findIndex((o) => o.nome.toLowerCase() === s.nome.toLowerCase()) === i,
+      )
+      .map((s) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: s.nome, description: s.descricao },
+      })),
   },
 });
 

@@ -70,8 +70,8 @@ const b = localizar('b');
 <style is:global>
   .pincel {
     transform: translateY(0) rotate(var(--rot));
-    /* Sombra para fundo claro (silk). */
-    filter: drop-shadow(0 14px 16px rgb(33 47 82 / 0.25));
+    /* Sombra escura: o pincel invade a seção clara abaixo do hero. */
+    filter: drop-shadow(0 14px 16px rgb(0 0 0 / 0.45));
     animation: pincel-flutuar 6.5s ease-in-out infinite alternate;
     animation-play-state: paused;
     will-change: transform;

@@ -58,5 +58,41 @@
     "nome": "Massagem relaxante",
     "descricao": "Um momento para aliviar tensões e desacelerar.",
     "categoria": "espaco"
+  },
+  {
+    "id": "maquiagem",
+    "nome": "Maquiagem",
+    "descricao": "Produções que realçam sua beleza com técnica, elegância e um acabamento impecável.",
+    "categoria": "outros"
+  },
+  {
+    "id": "unhas",
+    "nome": "Unhas",
+    "descricao": "Manicure, pedicure e alongamento para unhas impecáveis, com técnica, cuidado e acabamento de alto padrão.",
+    "categoria": "outros"
+  },
+  {
+    "id": "depilacao-pele",
+    "nome": "Depilação",
+    "descricao": "Pele macia e bem cuidada, com técnica, conforto e atenção em cada atendimento.",
+    "categoria": "outros"
+  },
+  {
+    "id": "sobrancelhas",
+    "nome": "Sobrancelhas",
+    "descricao": "Design preciso e personalizado para destacar o olhar e valorizar a harmonia do rosto.",
+    "categoria": "outros"
+  },
+  {
+    "id": "barbearia",
+    "nome": "Barbearia",
+    "descricao": "Cabelos e barba com acabamento preciso para um visual moderno, elegante e bem cuidado.",
+    "categoria": "outros"
+  },
+  {
+    "id": "cachos",
+    "nome": "Cachos",
+    "descricao": "Cuidado especializado para valorizar a forma, definição e beleza natural dos cabelos cacheados.",
+    "categoria": "outros"
   }
 ]
