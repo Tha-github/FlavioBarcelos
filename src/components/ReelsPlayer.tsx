@@ -257,7 +257,7 @@ export default function ReelsPlayer({ reels }: { reels: ReelOtimizado[] }) {
           <li key={r.id}>
             <button
               type="button"
-              class="group flex h-11 w-11 cursor-pointer items-center justify-center"
+              class="group flex h-11 w-6 cursor-pointer items-center justify-center"
               aria-label={`Ir para o vídeo ${n + 1} de ${total}`}
               aria-current={n === indice ? 'true' : undefined}
               onClick={() => ir(n)}
