@@ -102,24 +102,6 @@
     "autorizado": true
   },
   {
-    "arquivo": "18.png.jpeg",
-    "alt": "Antes e depois de design de sobrancelhas, com o rosto de frente e de perfil, olhos fechados",
-    "servico": "Sobrancelhas",
-    "autorizado": true
-  },
-  {
-    "arquivo": "19.png.jpeg",
-    "alt": "Sobrancelhas grossas e alinhadas em rosto de frente com os olhos fechados",
-    "servico": "Sobrancelhas",
-    "autorizado": true
-  },
-  {
-    "arquivo": "20.png.jpeg",
-    "alt": "Sobrancelhas escuras com design arqueado e bem preenchido em rosto de frente",
-    "servico": "Sobrancelhas",
-    "autorizado": true
-  },
-  {
     "arquivo": "21.png.jpeg",
     "alt": "Mulher de frente com cabelo cacheado volumoso, franja e mechas em tom caramelo",
     "servico": "Cachos",
@@ -128,12 +110,6 @@
   {
     "arquivo": "22.png.jpeg",
     "alt": "Mulher de costas com cabelo cacheado na altura dos ombros, raiz escura e pontas em tom caramelo",
-    "servico": "Cachos",
-    "autorizado": true
-  },
-  {
-    "arquivo": "23.png.jpeg",
-    "alt": "Mulher de perfil sorrindo, com cabelo crespo curto e volumoso e brinco dourado com pedra preta",
     "servico": "Cachos",
     "autorizado": true
   },

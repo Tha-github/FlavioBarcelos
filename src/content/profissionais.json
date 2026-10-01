@@ -5,7 +5,7 @@
     "area": "Especialista em loiros, cortes, tratamentos e alisamentos.",
     "instagram": "https://www.instagram.com/studioflaviobarcelos/",
     "foto": "flavio.jpeg",
-    "alt": "Flávio Barcelos, cabeleireiro, sorrindo, de avental preto."
+    "alt": "Flávio Barcelos, cabeleireiro, de avental preto, ao lado de uma cliente sorrindo."
   },
   {
     "id": "dayana-fitzner",
@@ -40,5 +40,12 @@
     "foto": "thai.jpeg",
     "alt": "Thai Azevedo, de cabelo cacheado, sorrindo, com um vestido verde.",
     "posicao": "top"
+  },
+  {
+    "id": "ju-gomes",
+    "nome": "Ju Gomes",
+    "area": "Especialista em cabelos crespos, cacheados e ondulados.",
+    "foto": "ju.jpeg",
+    "alt": "Ju Gomes sorrindo, com cabelo cacheado volumoso e blazer bege."
   }
 ]
