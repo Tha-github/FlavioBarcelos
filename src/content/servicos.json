@@ -72,15 +72,15 @@
     "categoria": "outros"
   },
   {
-    "id": "depilacao-pele",
-    "nome": "Depilação",
-    "descricao": "Pele macia e bem cuidada, com técnica, conforto e atenção em cada atendimento.",
+    "id": "depilacao-sobrancelhas",
+    "nome": "Depilação e Sobrancelhas",
+    "descricao": "Depilação e Sobrancelhas: técnica, conforto e atenção em cada atendimento.",
     "categoria": "outros"
   },
   {
-    "id": "sobrancelhas",
-    "nome": "Sobrancelhas",
-    "descricao": "Design preciso e personalizado para destacar o olhar e valorizar a harmonia do rosto.",
+    "id": "cabeleireiro",
+    "nome": "Cabeleireiro",
+    "descricao": "Cortes, colorações, mechas e alisamentos com técnicas personalizadas para realçar sua beleza.",
     "categoria": "outros"
   },
   {

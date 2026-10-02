@@ -12,6 +12,7 @@ const rotulo = (lista: readonly number[]) => {
 };
 ---
 
+{site.agendamentoPrevio && <p class="mb-2">(mediante agendamento prévio):</p>}
 <ul class="space-y-1">
   {site.horarios.map((horario) => (
     <li>

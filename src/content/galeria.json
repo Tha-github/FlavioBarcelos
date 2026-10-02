@@ -6,6 +6,36 @@
     "autorizado": true
   },
   {
+    "arquivo": "15.png.jpeg",
+    "alt": "Detalhe de olho com delineado gráfico, sombra dourada e aplicações de folha de ouro",
+    "servico": "Maquiagem",
+    "autorizado": true
+  },
+  {
+    "arquivo": "14.png.jpeg",
+    "alt": "Mulher de perfil com cabelo loiro em camadas com franja lateral e sobrancelhas marcadas",
+    "servico": "Loiras",
+    "autorizado": true
+  },
+  {
+    "arquivo": "12.png.jpeg",
+    "alt": "Mulher de costas com cabelo loiro em ondas longas e trança lateral em meio penteado",
+    "servico": "Penteado",
+    "autorizado": true
+  },
+  {
+    "arquivo": "extra3.jpeg",
+    "alt": "Duas clientes sorrindo lado a lado, uma com cabelo longo loiro e outra com corte curto castanho",
+    "servico": "Resultado",
+    "autorizado": true
+  },
+  {
+    "arquivo": "21.png.jpeg",
+    "alt": "Mulher de frente com cabelo cacheado volumoso, franja e mechas em tom caramelo",
+    "servico": "Cachos",
+    "autorizado": true
+  },
+  {
     "arquivo": "02.png.jpeg",
     "alt": "Mulher de frente com cabelo longo castanho escuro e mechas douradas, sentada na cadeira do salão",
     "servico": "Mechas",
@@ -18,14 +48,50 @@
     "autorizado": true
   },
   {
+    "arquivo": "extra5.jpeg",
+    "alt": "Duas mulheres sorrindo, uma com cabelo cacheado escuro e volumoso e outra com cabelo crespo com mechas douradas",
+    "servico": "Cachos",
+    "autorizado": true
+  },
+  {
+    "arquivo": "extra7.jpeg",
+    "alt": "Mulher de costas com cabelo longo ondulado e mechas douradas, com as mãos atrás da cabeça",
+    "servico": "Mechas",
+    "autorizado": true
+  },
+  {
+    "arquivo": "08.png.jpeg",
+    "alt": "Mão com unhas curtas ovais em base rosada com brilho prateado",
+    "servico": "Unhas",
+    "autorizado": true
+  },
+  {
+    "arquivo": "05.png.jpeg",
+    "alt": "Mulher sorrindo com cabelo longo ondulado e mechas loiras douradas diante de prateleiras de produtos",
+    "servico": "Mechas",
+    "autorizado": true
+  },
+  {
     "arquivo": "04.png.jpeg",
     "alt": "Mulher com cabelo longo liso, raiz escura e pontas em tom de loiro dourado",
     "servico": "Loiras",
     "autorizado": true
   },
   {
-    "arquivo": "05.png.jpeg",
-    "alt": "Mulher sorrindo com cabelo longo ondulado e mechas loiras douradas diante de prateleiras de produtos",
+    "arquivo": "07.png.jpeg",
+    "alt": "Mão com unhas amendoadas em francesinha branca clássica sobre base rosada",
+    "servico": "Unhas",
+    "autorizado": true
+  },
+  {
+    "arquivo": "22.png.jpeg",
+    "alt": "Mulher de costas com cabelo cacheado na altura dos ombros, raiz escura e pontas em tom caramelo",
+    "servico": "Cachos",
+    "autorizado": true
+  },
+  {
+    "arquivo": "extra4.jpeg",
+    "alt": "Cliente sentada com cabelo com mechas douradas, enquanto o cabeleireiro fotografa o resultado no espelho",
     "servico": "Mechas",
     "autorizado": true
   },
@@ -36,9 +102,9 @@
     "autorizado": true
   },
   {
-    "arquivo": "12.png.jpeg",
-    "alt": "Mulher de costas com cabelo loiro em ondas longas e trança lateral em meio penteado",
-    "servico": "Penteado",
+    "arquivo": "17.png.jpeg",
+    "alt": "Sobrancelhas volumosas com design e acabamento marcado, em foto de perto com os olhos fechados",
+    "servico": "Sobrancelhas",
     "autorizado": true
   },
   {
@@ -48,15 +114,9 @@
     "autorizado": true
   },
   {
-    "arquivo": "14.png.jpeg",
-    "alt": "Mulher de perfil com cabelo loiro em camadas com franja lateral e sobrancelhas marcadas",
-    "servico": "Loiras",
-    "autorizado": true
-  },
-  {
-    "arquivo": "15.png.jpeg",
-    "alt": "Detalhe de olho com delineado gráfico, sombra dourada e aplicações de folha de ouro",
-    "servico": "Maquiagem",
+    "arquivo": "24.png.jpeg",
+    "alt": "Mulher de costas com cabelo escuro com cachos definidos, longo e molhado, sobre toalha branca",
+    "servico": "Cachos",
     "autorizado": true
   },
   {
@@ -66,63 +126,27 @@
     "autorizado": true
   },
   {
-    "arquivo": "07.png.jpeg",
-    "alt": "Mão com unhas amendoadas em francesinha branca clássica sobre base rosada",
-    "servico": "Unhas",
+    "arquivo": "25.png.jpeg",
+    "alt": "Cabelo castanho escuro em cachos largos e volumosos, visto de costas, com a mão do cabeleireiro sobre a cabeça",
+    "servico": "Cachos",
     "autorizado": true
   },
   {
-    "arquivo": "08.png.jpeg",
-    "alt": "Mão com unhas curtas ovais em base rosada com brilho prateado",
-    "servico": "Unhas",
+    "arquivo": "extra2.jpeg",
+    "alt": "Área de lavagem do estúdio, com cadeiras e cubas reclináveis",
+    "servico": "Ambiente",
     "autorizado": true
   },
   {
-    "arquivo": "09.png.jpeg",
-    "alt": "Mão com unhas quadradas alongadas em esmalte rosa translúcido",
-    "servico": "Unhas",
+    "arquivo": "extra6.jpeg",
+    "alt": "Mulher sorridente com óculos e cabelo longo ondulado com mechas douradas, diante de prateleira de produtos",
+    "servico": "Mechas",
     "autorizado": true
   },
   {
     "arquivo": "10.png.jpeg",
     "alt": "Mão com unhas quadradas curtas em francesinha branca fina",
     "servico": "Unhas",
-    "autorizado": true
-  },
-  {
-    "arquivo": "16.png.jpeg",
-    "alt": "Sobrancelhas escuras e definidas, em foto de perto do rosto com os olhos fechados",
-    "servico": "Sobrancelhas",
-    "autorizado": true
-  },
-  {
-    "arquivo": "17.png.jpeg",
-    "alt": "Sobrancelhas volumosas com design e acabamento marcado, em foto de perto com os olhos fechados",
-    "servico": "Sobrancelhas",
-    "autorizado": true
-  },
-  {
-    "arquivo": "21.png.jpeg",
-    "alt": "Mulher de frente com cabelo cacheado volumoso, franja e mechas em tom caramelo",
-    "servico": "Cachos",
-    "autorizado": true
-  },
-  {
-    "arquivo": "22.png.jpeg",
-    "alt": "Mulher de costas com cabelo cacheado na altura dos ombros, raiz escura e pontas em tom caramelo",
-    "servico": "Cachos",
-    "autorizado": true
-  },
-  {
-    "arquivo": "24.png.jpeg",
-    "alt": "Mulher de costas com cabelo escuro com cachos definidos, longo e molhado, sobre toalha branca",
-    "servico": "Cachos",
-    "autorizado": true
-  },
-  {
-    "arquivo": "25.png.jpeg",
-    "alt": "Cabelo castanho escuro em cachos largos e volumosos, visto de costas, com a mão do cabeleireiro sobre a cabeça",
-    "servico": "Cachos",
     "autorizado": true
   }
 ]

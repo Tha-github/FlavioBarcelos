@@ -56,7 +56,7 @@ Google Analytics (ID) fica por conta do cliente, no final; a estrutura de consen
 1. Header fixo
 2. Hero (banner, com pincéis flutuantes)
 3. Cabelos by Flávio Barcelos (`#cabelos`, com 2 imagens: antes à esquerda e depois à direita)
-4. Outros Serviços (`#servicos`, em boxes)
+4. Todos os Serviços (`#servicos`, em boxes)
 5. Profissionais do Estúdio Flávio Barcelos (`#profissionais`, 5 fotos lado a lado com nome e área; substitui "Como funciona o atendimento")
 6. Cabelos feitos no studio (`#galeria`)
 7. Highlights (`#reels`, um vídeo por vez)
@@ -101,7 +101,7 @@ Dois pincéis de coloração renderizados em 3D flutuam no hero e atravessam a b
 
 | Token | Hex | Uso |
 |---|---|---|
-| --onyx | #000000 | Fundo das seções pretas (header, hero, Outros Serviços, Cabelos feitos no studio, Flávio Barcelos, Perguntas frequentes e CTA final) e texto sobre areia |
+| --onyx | #000000 | Fundo das seções pretas (header, hero, Todos os Serviços, Cabelos feitos no studio, Flávio Barcelos, Perguntas frequentes e CTA final) e texto sobre areia |
 | --pearl | #FFFFFF | Texto sobre preto, botões primários (texto preto) e fundo dos boxes em seções areia |
 | --stone | #D8D4C9 | Fundo das demais seções, do rodapé e do corpo da página (texto preto) |
 | --champagne | #D2B589 | Acento decorativo (bordas finas e detalhes), nunca em texto. Botões: gradiente dourado do logo (`--gradiente-ouro`) com texto preto |

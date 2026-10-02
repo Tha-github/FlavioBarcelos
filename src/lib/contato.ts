@@ -11,7 +11,7 @@ export function hora(valor: string): string {
   return `${Number(h)}h${m === '00' ? '' : m}`;
 }
 
-/** "Seg a sáb, 9h às 20h" (faixa contínua de dias) a partir de site.horarios. */
+/** "Seg a sex, 9h às 20h" (faixa contínua de dias do primeiro bloco) a partir de site.horarios. */
 export function horarioResumo(): string {
   const bloco = site.horarios[0];
   if (!bloco) return '';
@@ -21,7 +21,7 @@ export function horarioResumo(): string {
   return `${dias.charAt(0).toUpperCase()}${dias.slice(1)}, ${hora(bloco.abre)} às ${hora(bloco.fecha)}`;
 }
 
-/** "Rua México, 119 · Centro · Seg a sáb, 9h às 20h" */
+/** "Rua México, 119 · Centro · Seg a sex, 9h às 20h" */
 export function linhaApoio(): string {
   return `${enderecoCompleto()} · ${horarioResumo()}`;
 }

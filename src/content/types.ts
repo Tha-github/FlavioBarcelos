@@ -40,6 +40,8 @@ export interface Site {
   /** Dias/horários em que o estúdio funciona; os demais dias ficam fechados. */
   horarios: readonly Horario[];
   diasFechados: readonly number[];
+  /** true: os horários são exibidos com a ressalva "mediante agendamento prévio". */
+  agendamentoPrevio?: boolean;
   pagamento: Pagamento;
   links: Links;
   /** Número do WhatsApp só com dígitos, com DDI e DDD (ex.: 5521969261188). */

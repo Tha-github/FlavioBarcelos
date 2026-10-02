@@ -18,9 +18,13 @@ export const site: Site = {
     cep: '20031-907',
   },
 
-  // Segunda (1) a sábado (6), 09:00 às 20:00.
-  horarios: [{ dias: [1, 2, 3, 4, 5, 6], abre: '09:00', fecha: '20:00' }],
+  // Segunda (1) a sexta (5), 09:00 às 20:00; sábado (6), 09:00 às 14:00. Mediante agendamento prévio.
+  horarios: [
+    { dias: [1, 2, 3, 4, 5], abre: '09:00', fecha: '20:00' },
+    { dias: [6], abre: '09:00', fecha: '14:00' },
+  ],
   diasFechados: [0],
+  agendamentoPrevio: true,
 
   pagamento: {
     cartoes: [
